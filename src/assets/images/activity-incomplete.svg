@@ -1,0 +1,21 @@
+<svg id="call-uncomplete" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #48536e;
+      }
+
+      .cls-1 {
+        stroke-width: 1px;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <path id="selected_copy" data-name="selected copy" class="cls-1" d="M166.652,764.6l-9.352,9.353-5.952-5.1L154,766l3,3,7.1-6.952Z" transform="translate(-143 -752)"/>
+  <rect id="Rounded_Rectangle_2_copy_12" data-name="Rounded Rectangle 2 copy 12" class="cls-2" x="1" y="1" width="30" height="30" rx="15" ry="15"/>
+</svg>

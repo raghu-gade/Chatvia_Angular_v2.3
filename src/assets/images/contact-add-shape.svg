@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="52" viewBox="0 0 37 52">
+  <defs>
+    <filter id="Rectangle_525_copy_5" x="0" y="0" width="37" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-color="#002c64" flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="contact-add-shape" transform="translate(-1304 -120)">
+    <path id="Rounded_Rectangle_13_copy_5" data-name="Rounded Rectangle 13 copy 5" d="M1336,165.156v-2.344l2,3.188Zm0-44.266,2-.844-2,3.641Z" fill="#275ea5"/>
+    <g transform="matrix(1, 0, 0, 1, 1304, 120)" filter="url(#Rectangle_525_copy_5)">
+      <path id="Rectangle_525_copy_5-2" data-name="Rectangle 525 copy 5" d="M1338,120v46c-7.275-11.55-31-6.776-31-23C1307,127.793,1331.658,132.025,1338,120Z" transform="translate(-1304 -120)" fill="#2684fe"/>
+    </g>
+    <path id="Rounded_Rectangle_5_copy_6" data-name="Rounded Rectangle 5 copy 6" d="M1327,144h-2v2a1,1,0,1,1-2,0v-2h-2a1,1,0,1,1,0-2h2v-2a1,1,0,0,1,2,0v2h2a1,1,0,1,1,0,2Z" fill="#fff"/>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 75 26" style="enable-background:new 0 0 75 26;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill-rule:evenodd;clip-rule:evenodd;fill:url(#shadow_1_);}
+</style>
+<linearGradient id="shadow_1_" gradientUnits="userSpaceOnUse" x1="278.0883" y1="-335.3432" x2="292.6" y2="-356.0681" gradientTransform="matrix(1 0 0 -1 -247 -332)">
+	<stop  offset="0" style="stop-color:#000000"/>
+	<stop  offset="0.106" style="stop-color:#030508;stop-opacity:0.894"/>
+	<stop  offset="0.2666" style="stop-color:#0B121C;stop-opacity:0.7334"/>
+	<stop  offset="0.4616" style="stop-color:#18293F;stop-opacity:0.5384"/>
+	<stop  offset="0.6838" style="stop-color:#2B476E;stop-opacity:0.3162"/>
+	<stop  offset="0.9257" style="stop-color:#426EAA;stop-opacity:7.426578e-02"/>
+	<stop  offset="1" style="stop-color:#4A7BBE;stop-opacity:0"/>
+</linearGradient>
+<path id="shadow" class="st0" d="M0,25C30.4,20,40.2,7.6,47,0h28c0,0-28.3,25.7-32,25C43,25,1.1,25,0,25z"/>
+</svg>

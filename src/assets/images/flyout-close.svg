@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="52.001" viewBox="0 0 37 52.001">
+  <defs>
+    <filter id="Rectangle_525_copy_5" x="0" y="0.001" width="37" height="52" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-color="#1a0205" flood-opacity="0.149"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Flyout_close" data-name="Flyout close" transform="translate(-761 -17.999)">
+    <g id="contact-add-shape" transform="translate(2102 184) rotate(180)">
+      <path id="Rounded_Rectangle_13_copy_5" data-name="Rounded Rectangle 13 copy 5" d="M1336,165.156v-2.344l2,3.188Zm0-44.266,2-.844-2,3.641Z" fill="#80232f"/>
+      <g transform="matrix(-1, 0, 0, -1, 1341, 166)" filter="url(#Rectangle_525_copy_5)">
+        <path id="Rectangle_525_copy_5-2" data-name="Rectangle 525 copy 5" d="M1338,120v46c-7.275-11.55-31-6.776-31-23C1307,127.793,1331.658,132.025,1338,120Z" transform="translate(1341 166) rotate(180)" fill="#ff455f"/>
+      </g>
+    </g>
+    <g id="Close" transform="translate(778.658 36.863)">
+      <path id="Path" d="M15.081,8.464l1.654,1.654L14.254,12.6l2.481,2.482-1.654,1.654L12.6,14.254l-2.481,2.481L8.464,15.081,10.945,12.6,8.464,10.119l1.654-1.654L12.6,10.945Z" transform="translate(-9.037 -8.464)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7.025" height="12" viewBox="0 0 7.025 12">
+  <g id="arrow_right" data-name="arrow right" transform="translate(-1298.482 -250.457)">
+    <g id="right-arrow" transform="translate(1298.482 250.457)">
+      <path id="Path_597" data-name="Path 597" d="M12.39,12.731l-.683-.683,4.975-4.975L11.707,2.1l.683-.683,5.658,5.658Z" transform="translate(-11.365 -1.072)" fill="#fff"/>
+      <path id="Path_597_-_Outline" data-name="Path 597 - Outline" d="M12.284,12.943l-1-1,4.975-4.975L11.283,1.991l1-1,5.977,5.976Zm-.365-1,.365.365,5.34-5.34-5.34-5.34-.365.365,4.975,4.975Z" transform="translate(-11.259 -0.966)" fill="#fff"/>
+      <path id="Path_598" data-name="Path 598" d="M11.318,12l-1.025-1.025L15.268,6,10.293,1.025,11.318,0l6,6Zm-.342-1.025.342.342L16.635,6,11.318.683l-.342.342L15.951,6Z" transform="translate(-10.293 0)" fill="#fff"/>
+    </g>
+  </g>
+</svg>

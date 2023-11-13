@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#8F5DD1;}
+	.st1{fill:#824EC6;}
+	.st2{fill:#B786EA;}
+	.st3{fill:#FFF5F5;}
+	.st4{fill:#E3E7EA;}
+</style>
+<g>
+	<g>
+		<g id="Docs_3_">
+			<g>
+				<g>
+					<g>
+						<g>
+							<path class="st0" d="M451,135l-105-30L316,0H106C81.1,0,61,20.1,61,45v422c0,24.9,20.1,45,45,45h300c24.9,0,45-20.1,45-45
+								V135z"/>
+						</g>
+					</g>
+				</g>
+			</g>
+			<path class="st1" d="M451,135v332c0,24.9-20.1,45-45,45H256V0h60l30,105L451,135z"/>
+			<path class="st2" d="M451,135H346c-16.5,0-30-13.5-30-30V0c3.9,0,7.8,1.5,10.5,4.5l120,120C449.5,127.2,451,131.1,451,135z"/>
+			<g>
+				<path class="st3" d="M346,241H166c-8.3,0-15-6.7-15-15s6.7-15,15-15h180c8.3,0,15,6.7,15,15S354.3,241,346,241z"/>
+			</g>
+			<g>
+				<path class="st3" d="M346,301H166c-8.3,0-15-6.7-15-15s6.7-15,15-15h180c8.3,0,15,6.7,15,15S354.3,301,346,301z"/>
+			</g>
+			<g>
+				<path class="st3" d="M346,361H166c-8.3,0-15-6.7-15-15s6.7-15,15-15h180c8.3,0,15,6.7,15,15S354.3,361,346,361z"/>
+			</g>
+			<g>
+				<path class="st3" d="M286,421H166c-8.3,0-15-6.7-15-15s6.7-15,15-15h120c8.3,0,15,6.7,15,15S294.3,421,286,421z"/>
+			</g>
+		</g>
+		<g id="Docs_4_">
+			<g>
+				<g>
+					<path class="st4" d="M256,421h30c8.3,0,15-6.7,15-15s-6.7-15-15-15h-30V421z"/>
+				</g>
+				<g>
+					<path class="st4" d="M256,361h90c8.3,0,15-6.7,15-15s-6.7-15-15-15h-90V361z"/>
+				</g>
+				<g>
+					<path class="st4" d="M256,301h90c8.3,0,15-6.7,15-15s-6.7-15-15-15h-90V301z"/>
+				</g>
+				<g>
+					<path class="st4" d="M256,241h90c8.3,0,15-6.7,15-15s-6.7-15-15-15h-90V241z"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,32 @@
+<svg id="contact-add-shape" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="51" viewBox="0 0 36 51">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2684fe;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #184682;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+    <filter id="filter" x="1302" y="118" width="36" height="51" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-3" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="1.732"/>
+      <feFlood result="flood" flood-color="#003fb3" flood-opacity="0.2"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="Rectangle_525_copy_5" data-name="Rectangle 525 copy 5" class="cls-1" d="M1338,120v46c-7.28-11.55-31-6.776-31-23C1307,127.793,1331.66,132.025,1338,120Z" transform="translate(-1302 -118)"/>
+  <path id="Rounded_Rectangle_13_copy_5" data-name="Rounded Rectangle 13 copy 5" class="cls-2" d="M1336,120l2,2h-2v-2Zm0,44h2l-2,2v-2Z" transform="translate(-1302 -118)"/>
+  <path id="Rounded_Rectangle_5_copy_6" data-name="Rounded Rectangle 5 copy 6" class="cls-3" d="M1327,145h-2v2a1,1,0,1,1-2,0v-2h-2a1,1,0,0,1,0-2h2v-2a1,1,0,0,1,2,0v2h2A1,1,0,0,1,1327,145Z" transform="translate(-1302 -118)"/>
+</svg>

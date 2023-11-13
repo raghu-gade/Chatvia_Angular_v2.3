@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="15.962" height="15.962" viewBox="0 0 15.962 15.962">
+  <g id="edit" transform="translate(-0.001)">
+    <path id="Path_600" data-name="Path 600" d="M10.331,434.552v1.44l-2.16.72Z" transform="translate(-7.916 -421.004)" fill="#4d4d4d"/>
+    <path id="Path_601" data-name="Path 601" d="M8.891,428.959l1.26-.18-.18,1.26-1.8,1.08Z" transform="translate(-7.916 -415.411)" fill="#737373"/>
+    <path id="Path_602" data-name="Path 602" d="M68.063,399.913l.36,1.8-2.16.72-.36-.36Z" transform="translate(-63.848 -387.445)" fill="#ffc1a6"/>
+    <path id="Path_603" data-name="Path 603" d="M31.983,362.707l2.962-.083-.8,2.242-1.8,1.08-1.08-1.08Z" transform="translate(-30.288 -351.319)" fill="#ffdbcc"/>
+    <path id="Path_604" data-name="Path 604" d="M132.311,125.462l.48,1.92-8.436,8.436-.72-.72Z" transform="translate(-119.78 -121.551)" fill="#ffd617"/>
+    <path id="Path_605" data-name="Path 605" d="M386.538,43.429l1.92.96,1.44-1.44a1.021,1.021,0,0,0,0-1.44l-.72-.72Z" transform="translate(-374.487 -39.517)" fill="#fe5f1a"/>
+    <path id="Path_606" data-name="Path 606" d="M54.355,103.107l1.44,1.44,1.152-.288,8.436-8.436-2.592-1.152Z" transform="translate(-52.66 -91.72)" fill="#ffe465"/>
+    <rect id="Rectangle_38" data-name="Rectangle 38" width="1.018" height="12.949" transform="translate(12.291 3.672) rotate(45)" fill="#ffd617"/>
+    <path id="Path_607" data-name="Path 607" d="M358.629,8.467l.72.72a1.021,1.021,0,0,1,0,1.44l-1.92,1.92-1.68-2.64,1.44-1.44A1.021,1.021,0,0,1,358.629,8.467Z" transform="translate(-344.657 -7.915)" fill="#fe834d"/>
+    <rect id="Rectangle_39" data-name="Rectangle 39" width="1.018" height="1.358" transform="translate(13.251 4.152) rotate(45)" fill="#dcdcdc"/>
+    <rect id="Rectangle_40" data-name="Rectangle 40" width="3.055" height="1.358" transform="translate(11.092 1.992) rotate(45)" fill="#fff"/>
+    <path id="Path_608" data-name="Path 608" d="M11.283,7.92l2.868-2.868,1.44-1.44a1.276,1.276,0,0,0,0-1.8L14.151.372a1.276,1.276,0,0,0-1.8,0L8.043,4.68l-.36.36L1.515,11.208l-.019.021,0,.006-.012.017,0,.007-.01.018,0,.007-.008.019,0,0-1.44,4.32a.255.255,0,0,0,.322.322l4.32-1.44,0,0,.018-.007.008,0,.017-.009.007,0,.017-.012.006,0,.021-.019L10.923,8.28ZM4.575,13.907l-2.52-2.52L3.483,9.96l6.649-6.649,1.08,1.08.36.36.54.54a.255.255,0,0,0,.36-.36l-.72-.72-1.26-1.26.6-.6,2.52,2.52ZM2.484,14.7,1.267,13.479l.54-1.619,2.3,2.3ZM12.712.732a.767.767,0,0,1,1.08,0l1.44,1.44a.764.764,0,0,1,0,1.08l-1.26,1.26-2.52-2.52ZM1.087,14.019l.857.857L.658,15.3Z" transform="translate(0)"/>
+  </g>
+</svg>

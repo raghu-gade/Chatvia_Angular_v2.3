@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g id="Recording" transform="translate(13265 1500)">
+    <g id="Group_925" data-name="Group 925">
+      <g id="Group_924" data-name="Group 924" transform="translate(-9 24)">
+        <path id="Path_1454" data-name="Path 1454" d="M8,0a8,8,0,1,0,8,8A8.009,8.009,0,0,0,8,0Z" transform="translate(-13256 -1524)" fill="#303c42"/>
+        <path id="Path_1455" data-name="Path 1455" d="M28.666,36A7.333,7.333,0,1,1,36,28.666,7.342,7.342,0,0,1,28.666,36Z" transform="translate(-13276.666 -1544.666)" fill="#ccc8ff"/>
+        <g id="Group_923" data-name="Group 923" transform="translate(-0.354 -0.354)">
+          <circle id="Ellipse_184" data-name="Ellipse 184" cx="3.687" cy="3.687" r="3.687" transform="translate(-13251.333 -1519.333)" fill="#303c42"/>
+          <circle id="Ellipse_185" data-name="Ellipse 185" cx="2.949" cy="2.949" r="2.949" transform="translate(-13250.597 -1518.596)" fill="#d32f2f"/>
+          <path id="Path_1456" data-name="Path 1456" d="M180.062,185.844a2.912,2.912,0,0,1,.171.95,2.944,2.944,0,0,1-4.622,2.425,2.943,2.943,0,1,0,4.451-3.375Z" transform="translate(-13426.036 -1703.915)" opacity="0.1"/>
+        </g>
+        <path id="Path_1457" data-name="Path 1457" d="M189.373,185.133a3.318,3.318,0,0,1-4.7,4.68l-.006.007,4.5,4.5a7.362,7.362,0,0,0,4.7-4.691Z" transform="translate(-13434.901 -1703.348)" fill="rgba(0,0,0,0.05)"/>
+      </g>
+    </g>
+  </g>
+</svg>

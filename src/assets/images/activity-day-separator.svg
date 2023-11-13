@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="752" height="16" viewBox="0 0 752 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="-1" y="0" width="755" height="18" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dy="3" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="1"/>
+      <feFlood result="flood" flood-color="#003fb3" flood-opacity="0.12"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="day-separotor" class="cls-1" d="M749,13l-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-5,5-5-5-5,5-5-5-4,5-5-5-4,5-5-5-4,5-5-5-5,5-5-5-4,5-5-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-5,5-5-5-5,5-5-5-4,5-5-5-4,5-5-5-4,5-5-5-5,5-4-5-4,5-5-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-5,5-5-5-5,5-5-5-4,5-5-5-4,5-5-5-4,5-5-5-5,5-5-5-4,5-5-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-4,5-4-5-5,5-5-5-5,5-5-5-4,5-5-5-4,5-5-5-4,5-5-5-5,5-5-5-5,5-5-5-5,5-5-5-4,5-5-5-4,5-5-5-4,5L92,8l-5,5L82,8l-4,5L73,8l-4,5L65,8l-4,5L57,8l-4,5L49,8l-4,5L41,8l-4,5L33,8l-4,5L25,8l-4,5L17,8l-4,5L9,8,4,13,0,7V0H752V6Z"/>
+</svg>

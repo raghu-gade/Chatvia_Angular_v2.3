@@ -1,0 +1,156 @@
+/* You can add global styles to this file, and also import other style files */
+/*  Toastr Styles*/
+#toast-container {
+  z-index: 999999 !important;
+}
+
+#toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  z-index: 99;
+}
+
+.vm-toast-btn {
+  border-radius: 3rem !important;
+}
+.vm-toast-btn:hover {
+  color: #ffffff !important;
+}
+
+.vm-toast-success, .show-toast-success {
+  background: #62cf5d;
+  box-shadow: 0px 30px 25px 0px rgba(27, 93, 178, 0.18), 0px 1px 2px 0px rgba(27, 93, 178, 0.08);
+}
+
+.vm-toast-warning, .vm-toast-poor-network, .show-toast-warning, .show-toast-poor {
+  background: #fbe94b;
+  box-shadow: 0px 30px 25px 0px rgba(180, 129, 73, 0.25), 0px 1px 2px 0px rgba(180, 129, 73, 0.12);
+}
+
+.vm-toast-danger, .show-toast-danger {
+  background: #ff455f;
+  box-shadow: 0px 30px 25px 0px rgba(200, 56, 77, 0.25), 0px 1px 2px 0px rgba(200, 56, 77, 0.12);
+}
+
+.show-toast-danger, .show-toast-success, .show-toast-poor, .show-toast-warning {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.toast {
+  border-color: transparent;
+  min-width: 30rem;
+  top: 12px;
+  margin: 0 auto;
+  left: 50%;
+  display: none;
+  color: #ffffff;
+}
+.toast h2 {
+  color: #ffffff !important;
+}
+.toast .toast-header {
+  background: transparent;
+  color: #ffffff;
+  border-bottom-color: transparent;
+  display: inherit;
+}
+.toast .toast-header .close {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: normal;
+  font-size: 1.6rem;
+  outline: 0;
+}
+.toast.vm-toast-poor-network {
+  max-width: 850px !important;
+}
+.toast.vm-toast-poor-network .close {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: normal;
+  font-size: 1.6rem;
+  outline: 0;
+}
+
+.btn-color{
+  background-color: #17a2b8;
+}
+#toast-container {
+  z-index: 999999 !important;
+}
+
+#toast-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  z-index: 99;
+}
+
+.vm-toast-btn {
+  border-radius: 3rem !important;
+}
+.vm-toast-btn:hover {
+  color: #ffffff !important;
+}
+
+.vm-toast-success, .show-toast-success {
+  background: #62cf5d;
+  box-shadow: 0px 30px 25px 0px rgba(27, 93, 178, 0.18), 0px 1px 2px 0px rgba(27, 93, 178, 0.08);
+}
+
+.vm-toast-warning, .vm-toast-poor-network, .show-toast-warning, .show-toast-poor {
+  background: #fbe94b;
+  box-shadow: 0px 30px 25px 0px rgba(180, 129, 73, 0.25), 0px 1px 2px 0px rgba(180, 129, 73, 0.12);
+}
+
+.vm-toast-danger, .show-toast-danger {
+  background: #ff455f;
+  box-shadow: 0px 30px 25px 0px rgba(200, 56, 77, 0.25), 0px 1px 2px 0px rgba(200, 56, 77, 0.12);
+}
+
+.show-toast-danger, .show-toast-success, .show-toast-poor, .show-toast-warning {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.toast {
+  border-color: transparent;
+  min-width: 30rem;
+  top: 12px;
+  margin: 0 auto;
+  left: 50%;
+  display: none;
+  color: #ffffff;
+}
+.toast h2 {
+  color: #ffffff !important;
+}
+.toast .toast-header {
+  background: transparent;
+  color: #ffffff;
+  border-bottom-color: transparent;
+  display: inherit;
+}
+.toast .toast-header .close {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: normal;
+  font-size: 1.6rem;
+  outline: 0;
+}
+.toast.vm-toast-poor-network {
+  max-width: 850px !important;
+}
+.toast.vm-toast-poor-network .close {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: normal;
+  font-size: 1.6rem;
+  outline: 0;
+}
+/* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';

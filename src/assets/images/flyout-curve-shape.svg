@@ -1,0 +1,19 @@
+<svg id="flyout-curve-shape" xmlns="http://www.w3.org/2000/svg" width="30" height="82" viewBox="0 0 30 82">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2684fe;
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="Rectangle_525_copy" data-name="Rectangle 525 copy" class="cls-1" d="M30,0c0,22.333,0,59.667,0,82C18.767,67.783,0,58.874,0,41,0,25.926,17.45,14.233,30,0Z"/>
+  <path id="X" class="cls-2" d="M26,43l3-4H26l-2,3-2-3H19l3,4-3,4h3l2-3,2,3h3Z"/>
+</svg>

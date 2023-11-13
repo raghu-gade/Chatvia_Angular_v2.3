@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 469.3 469.3" style="enable-background:new 0 0 469.3 469.3;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#303C42;}
+	.st1{fill:#F5FAFC;}
+	.st2{fill:url(#SVGID_1_);}
+</style>
+<g>
+	<circle class="st0" cx="234.7" cy="42.7" r="42.7"/>
+	<circle class="st0" cx="106.7" cy="42.7" r="42.7"/>
+	<circle class="st0" cx="362.7" cy="42.7" r="42.7"/>
+	<circle class="st0" cx="234.7" cy="170.7" r="42.7"/>
+	<circle class="st0" cx="106.7" cy="170.7" r="42.7"/>
+	<circle class="st0" cx="362.7" cy="170.7" r="42.7"/>
+	<circle class="st0" cx="234.7" cy="298.7" r="42.7"/>
+	<circle class="st0" cx="106.7" cy="298.7" r="42.7"/>
+	<circle class="st0" cx="362.7" cy="298.7" r="42.7"/>
+	<circle class="st0" cx="234.7" cy="426.7" r="42.7"/>
+</g>
+<g>
+	<circle class="st1" cx="106.7" cy="42.7" r="21.3"/>
+	<circle class="st1" cx="234.7" cy="42.7" r="21.3"/>
+	<circle class="st1" cx="362.7" cy="42.7" r="21.3"/>
+	<circle class="st1" cx="106.7" cy="170.7" r="21.3"/>
+	<circle class="st1" cx="234.7" cy="170.7" r="21.3"/>
+	<circle class="st1" cx="362.7" cy="170.7" r="21.3"/>
+	<circle class="st1" cx="106.7" cy="298.7" r="21.3"/>
+	<circle class="st1" cx="234.7" cy="298.7" r="21.3"/>
+	<circle class="st1" cx="362.7" cy="298.7" r="21.3"/>
+	<circle class="st1" cx="234.7" cy="426.7" r="21.3"/>
+</g>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="150.6705" y1="-386.6926" x2="168.7487" y2="-378.2625" gradientTransform="matrix(21.3333 0 0 21.3333 -3185.5479 8358.2305)">
+	<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.2"/>
+	<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0"/>
+</linearGradient>
+<path class="st2" d="M234.7,384c-23.5,0-42.7,19.1-42.7,42.7s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7S258.2,384,234.7,384z
+	 M106.7,128C83.1,128,64,147.1,64,170.7s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7S130.2,128,106.7,128z M106.7,256
+	C83.1,256,64,275.1,64,298.7s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7S130.2,256,106.7,256z M362.7,85.3c23.5,0,42.7-19.1,42.7-42.7
+	S386.2,0,362.7,0S320,19.1,320,42.7S339.1,85.3,362.7,85.3z M106.7,0C83.1,0,64,19.1,64,42.7s19.1,42.7,42.7,42.7
+	s42.7-19.1,42.7-42.7S130.2,0,106.7,0z M362.7,256c-23.5,0-42.7,19.1-42.7,42.7s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7
+	S386.2,256,362.7,256z M234.7,256c-23.5,0-42.7,19.1-42.7,42.7s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7S258.2,256,234.7,256z
+	 M362.7,128c-23.5,0-42.7,19.1-42.7,42.7s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7S386.2,128,362.7,128z M234.7,0
+	C211.1,0,192,19.1,192,42.7s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7S258.2,0,234.7,0z M234.7,128c-23.5,0-42.7,19.1-42.7,42.7
+	s19.1,42.7,42.7,42.7s42.7-19.1,42.7-42.7S258.2,128,234.7,128z"/>
+</svg>

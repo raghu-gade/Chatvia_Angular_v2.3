@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="70" viewBox="0 0 44 70">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2684fe;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <filter id="filter" x="-13" y="-12" width="57" height="95" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-20" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="3.606"/>
+      <feFlood result="flood" flood-color="#19457f" flood-opacity="0.24"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feOffset result="offset-2" dx="-3" in="SourceAlpha"/>
+      <feGaussianBlur result="blur-2" stdDeviation="1.414"/>
+      <feFlood result="flood-2" flood-color="#216bcb" flood-opacity="0.7"/>
+      <feComposite result="composite-2" operator="in" in2="blur-2"/>
+      <feBlend result="blend" in2="composite"/>
+      <feBlend result="blend-2" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="Rectangle_525_copy" data-name="Rectangle 525 copy" class="cls-1" d="M44,0c0,18.863,0,51.137,0,70C34.512,57.992,19,50.1,19,35,19,22.269,33.893,12.444,44,0Z"/>
+  <path id="x" class="cls-2" d="M41,34l3-4-2.966.011L39,33l-2-3H34l3,4-3,4h3l2-3,2,3h3Z"/>
+</svg>

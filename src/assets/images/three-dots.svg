@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3" height="13" viewBox="0 0 3 13">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #323a4d;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="three-dots" class="cls-1" d="M1276.5,307a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,1276.5,307Zm0,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,1276.5,312Zm0,5a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,1276.5,317Z" transform="translate(-1275 -307)"/>
+</svg>

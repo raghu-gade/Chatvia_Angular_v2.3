@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="70" viewBox="0 0 28 70">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #2684fe;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-2 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+    <filter id="filter" x="-1" y="-1" width="29" height="73" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="-3" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="1.414"/>
+      <feFlood result="flood" flood-color="#216bcb" flood-opacity="0.83"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <path id="Rectangle_525_copy" data-name="Rectangle 525 copy" class="cls-1" d="M28,0c0,18.863,0,51.137,0,70C18.512,57.992,3,50.1,3,35,3,22.269,17.893,12.444,28,0Z"/>
+  <path id="x" class="cls-2" d="M25,34l3-4-2.966.011L23,33l-2-3H18l3,4-3,4h3l2-3,2,3h3Z"/>
+</svg>

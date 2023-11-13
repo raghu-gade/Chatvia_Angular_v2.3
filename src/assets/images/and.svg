@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.1" height="16.1" viewBox="0 0 16.1 16.1">
+  <g id="And_intersect" data-name="And intersect" transform="translate(-1064.9 -382.9)">
+    <rect id="Rectangle_91" data-name="Rectangle 91" width="5.373" height="5.373" transform="translate(1070.252 388.253)" fill="#ee96b0"/>
+    <path id="Path_1190" data-name="Path 1190" d="M184.4,187.977V183.5h-.9v5.373h5.373v-.9Z" transform="translate(886.752 204.753)" fill="#eb81a1"/>
+    <g id="Group_656" data-name="Group 656" transform="translate(1064.9 382.9)">
+      <path id="Path_1186" data-name="Path 1186" d="M16.753,12.574V7.5H7.5v9.253h5.074V12.574Z" transform="translate(-7.22 -7.22)" fill="#9ee2e6"/>
+      <g id="Group_654" data-name="Group 654" transform="translate(0.28 0.28)">
+        <path id="Path_1187" data-name="Path 1187" d="M8.4,15.858V7.5H7.5v9.253h5.074v-.9Z" transform="translate(-7.5 -7.5)" fill="#7ed9de"/>
+      </g>
+      <path id="Path_1191" data-name="Path 1191" d="M5.634,9.533v-3.9h3.9a.28.28,0,0,0,.28-.28V.28A.28.28,0,0,0,9.533,0H3.713a.28.28,0,1,0,0,.56H9.253V5.074h-3.9a.28.28,0,0,0-.28.28v3.9H.56V.56h1.81a.28.28,0,0,0,0-.56H.28A.28.28,0,0,0,0,.28V9.533a.28.28,0,0,0,.28.28H5.354A.28.28,0,0,0,5.634,9.533Z"/>
+    </g>
+    <g id="Group_655" data-name="Group 655" transform="translate(1071.187 389.187)">
+      <path id="Path_1188" data-name="Path 1188" d="M259.679,255.5v4.179H255.5v5.074h9.253V255.5Z" transform="translate(-255.22 -255.22)" fill="#facf5a"/>
+      <path id="Path_1189" data-name="Path 1189" d="M263.858,255.5v8.358H255.5v.9h9.253V255.5Z" transform="translate(-255.22 -255.294)" fill="#e8b938"/>
+      <path id="Path_1192" data-name="Path 1192" d="M257.533,248h-5.074a.28.28,0,0,0-.28.28v3.9h-3.9a.28.28,0,0,0-.28.28v5.074a.28.28,0,0,0,.28.28h9.253a.28.28,0,0,0,.28-.28V248.28A.28.28,0,0,0,257.533,248Zm-.28,9.253H248.56v-4.515h3.9a.28.28,0,0,0,.28-.28v-3.9h4.515Z" transform="translate(-248 -248)"/>
+    </g>
+    <path id="Path_1193" data-name="Path 1193" d="M181.653,176H176.28a.28.28,0,0,0-.28.28v5.373a.28.28,0,0,0,.28.28h5.373a.28.28,0,0,0,.28-.28V176.28A.28.28,0,0,0,181.653,176Zm-.28,5.373H176.56V176.56h4.813Z" transform="translate(893.973 211.973)"/>
+  </g>
+</svg>

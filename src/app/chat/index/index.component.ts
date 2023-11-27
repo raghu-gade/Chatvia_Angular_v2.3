@@ -1,4 +1,12 @@
-import { Component, OnInit, ViewChild, TemplateRef, RendererFactory2, Renderer2, ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  TemplateRef,
+  RendererFactory2,
+  Renderer2,
+  ElementRef,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
@@ -11,11 +19,14 @@ import { AuthenticationService } from '../../core/services/auth.service';
 import { AuthfakeauthenticationService } from '../../core/services/authfake.service';
 import * as $ from 'jquery';
 import * as Twilio from 'twilio-chat';
-import { isSupported } from "@firebase/messaging";
+import { isSupported } from '@firebase/messaging';
 
-import {  Messaging,  getMessaging,  getToken,  onMessage} from "@firebase/messaging";
-
-
+import {
+  Messaging,
+  getMessaging,
+  getToken,
+  onMessage,
+} from '@firebase/messaging';
 
 // Date Format
 import { DatePipe, provideCloudinaryLoader } from '@angular/common';
@@ -28,7 +39,7 @@ import {
   Participant,
   SendMediaOptions,
   User,
-  PushNotification
+  PushNotification,
 } from '@twilio/conversations';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -37,7 +48,7 @@ import { SpinnerService } from 'src/app/spinner/spinner.service';
 import { ToastrService } from 'ngx-toastr';
 import { SendNotificationByIdentity } from 'src/app/models/SendNotificationByIdentity';
 import * as firebase from 'firebase/compat';
-import { FirebaseApp, initializeApp } from "firebase/app";
+import { FirebaseApp, initializeApp } from 'firebase/app';
 import { connect, createLocalVideoTrack } from 'twilio-video';
 
 @Component({
@@ -80,30 +91,30 @@ export class IndexComponent implements OnInit {
   ChannelName: any;
   channelIdentity: any;
   groupList: any = [];
-  message:any
-  BrowserToken:any
-  videotoken:any
-  roomName:any
+  message: any;
+  BrowserToken: any;
+  videotoken: any;
+  roomName: any;
 
-  joinRoomName:any
+  joinRoomName: any;
   roomObj: any;
   microphone = true;
   previewing: boolean;
   roomParticipants;
   remoteVideo: ElementRef;
   localVideo: ElementRef;
-  isVideoChat: boolean=false
-  localParticipant:any
-  remoteParticipant:any
+  isVideoChat: boolean = false;
+  localParticipant: any;
+  //remoteParticipant:any
+  // remoteParticipant = document.getElementById('remoteParticipant');
+  // remoteIdentity = document.getElementById('remoteIdentity');
 
-
-
-  public msgBody:SendNotificationByIdentity
+  public msgBody: SendNotificationByIdentity;
 
   private conSub: any;
   public app: FirebaseApp;
-public messaging: Messaging;
-public initialized = false;
+  public messaging: Messaging;
+  public initialized = false;
 
   listLang = [
     { text: 'English', flag: 'assets/images/flags/us.jpg', lang: 'en' },
@@ -130,8 +141,8 @@ public initialized = false;
     private loader: SpinnerService,
     private toastr: ToastrService,
     private renderer: Renderer2,
-    private rendererFactory: RendererFactory2)
-     {
+    private rendererFactory: RendererFactory2
+  ) {
     this.$nameSubscriber = this.chatService.userName.subscribe(
       (name) => (this.userName = name)
     );
@@ -154,7 +165,6 @@ public initialized = false;
   contactsList: User[];
   userList: any;
   ngOnInit(): void {
-
     document.body.setAttribute('data-layout-mode', 'light');
     this.isToday = new Date();
     //this.FCMInit()
@@ -173,7 +183,6 @@ public initialized = false;
     this.lang = this.translate.currentLang;
     this.onListScroll();
     this.getContacts();
-
   }
 
   // FCMInit() {
@@ -186,9 +195,6 @@ public initialized = false;
   //     this.initialized = true;
   //     //this.initFcmServiceWorker();
 
-
-
-
   //   } catch(err) {
   //     console.log(err)
   //     console.warn("Couldn't initialize firebase app");
@@ -198,64 +204,64 @@ public initialized = false;
   ngAfterViewInit() {
     this.scrollRef.SimpleBar.getScrollElement().scrollTop = 100;
   }
-//  initFcmServiceWorker = async (): Promise<void> => {
-//     if (!this.initialized) {
-//       return;
-//     }
+  //  initFcmServiceWorker = async (): Promise<void> => {
+  //     if (!this.initialized) {
+  //       return;
+  //     }
 
-//     try {
-//       debugger
-//       const registration = await navigator.serviceWorker.register(
-//         "firebase-messaging-sw.js"
-//       );
-//       //this.subscribeFcmNotifications(this.client);
-//       console.log("ServiceWorker registered with scope:", registration.scope);
-//     } catch (e) {
-//       console.log("ServiceWorker registration failed:", e);
-//     }
-//   };
-// subscribeFcmNotifications = async (
-//     convoClient: Client
-//   ): Promise<void> => {
-//     if (!this.initialized) {
-//       return;
-//     }
-// try {
-//     const permission = await Notification.requestPermission();
-//     debugger
-//     if (permission !== "granted") {
-//       console.log("FcmNotifications: can't request permission:", permission);
-//       return;
-//     }
+  //     try {
+  //       debugger
+  //       const registration = await navigator.serviceWorker.register(
+  //         "firebase-messaging-sw.js"
+  //       );
+  //       //this.subscribeFcmNotifications(this.client);
+  //       console.log("ServiceWorker registered with scope:", registration.scope);
+  //     } catch (e) {
+  //       console.log("ServiceWorker registration failed:", e);
+  //     }
+  //   };
+  // subscribeFcmNotifications = async (
+  //     convoClient: Client
+  //   ): Promise<void> => {
+  //     if (!this.initialized) {
+  //       return;
+  //     }
+  // try {
+  //     const permission = await Notification.requestPermission();
+  //     debugger
+  //     if (permission !== "granted") {
+  //       console.log("FcmNotifications: can't request permission:", permission);
+  //       return;
+  //     }
 
-//     const fcmToken = await getToken(this.messaging, { vapidKey: environment.firebase.vapidKey});
-//     if (!fcmToken) {
-//       console.log("FcmNotifications: can't get fcm token");
-//       return;
-//     }
+  //     const fcmToken = await getToken(this.messaging, { vapidKey: environment.firebase.vapidKey});
+  //     if (!fcmToken) {
+  //       console.log("FcmNotifications: can't get fcm token");
+  //       return;
+  //     }
 
-//     console.log("FcmNotifications: got fcm token", fcmToken);
-//     try{
-//     await this.client.setPushRegistrationId("fcm", fcmToken).then(a=>{
-//       console.log(a)
-//     }).catch(e=>{console.log(e)})
-//     debugger
-//   }
-//   catch (e) {
-//     console.log(e)
-//     console.log("subscribeFcmNotifications failed:", e);
-//   }
-//     onMessage(this.messaging, (payload) => {
-//       console.log("FcmNotifications: push received", payload);
-//       if (convoClient) {
-//         convoClient.handlePushNotification(payload);
-//       }
-//     });
-//   } catch (e) {
-//     console.log(e)
-//     console.log("subscribeFcmNotifications failed:", e);
-//   }
-//   };
+  //     console.log("FcmNotifications: got fcm token", fcmToken);
+  //     try{
+  //     await this.client.setPushRegistrationId("fcm", fcmToken).then(a=>{
+  //       console.log(a)
+  //     }).catch(e=>{console.log(e)})
+  //     debugger
+  //   }
+  //   catch (e) {
+  //     console.log(e)
+  //     console.log("subscribeFcmNotifications failed:", e);
+  //   }
+  //     onMessage(this.messaging, (payload) => {
+  //       console.log("FcmNotifications: push received", payload);
+  //       if (convoClient) {
+  //         convoClient.handlePushNotification(payload);
+  //       }
+  //     });
+  //   } catch (e) {
+  //     console.log(e)
+  //     console.log("subscribeFcmNotifications failed:", e);
+  //   }
+  //   };
   showNotification = (pushNotification: PushNotification): void => {
     // if (!this.initialized) {
     //   return;
@@ -264,16 +270,19 @@ public initialized = false;
     // TODO: remove when new version of sdk will be released
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const notificationTitle = pushNotification.data.conversationTitle || "";
-debugger
+    const notificationTitle = pushNotification.data.conversationTitle || '';
+    debugger;
     const notificationOptions = {
-      body: pushNotification.body ?? "",
-      icon: "favicon.ico",
+      body: pushNotification.body ?? '',
+      icon: 'favicon.ico',
     };
 
-    const notification = new Notification(notificationTitle, notificationOptions);
+    const notification = new Notification(
+      notificationTitle,
+      notificationOptions
+    );
     notification.onclick = (event) => {
-      console.log("notification.onclick", event);
+      console.log('notification.onclick', event);
       event.preventDefault(); // prevent the browser from focusing the Notification's tab
       // TODO: navigate to the corresponding conversation
       notification.close();
@@ -357,7 +366,6 @@ debugger
     this.loader.show();
     this.chatService.getUsers().subscribe(
       (data: any) => {
-
         let users = data.users;
         users.forEach((x: any) => {
           this.contactsList.push(x);
@@ -374,7 +382,6 @@ debugger
           return groups;
         }, {});
 
-
         // contacts list
         this.userList = Object.keys(grouped).map((key) => ({
           key,
@@ -389,7 +396,6 @@ debugger
     );
   }
   selectUsers(e, item) {
-
     console.log(e.currentTarget.checked);
     console.log(item);
     if (e.currentTarget.checked == true) {
@@ -532,11 +538,10 @@ debugger
     //   document.querySelector('.chat-user-list li.active .chat-user-message').innerHTML = message ? message: this.img;
     // }
     if (this.sendMessage != undefined || this.sendMessage != null) {
-
       this.currentConversation
         .sendMessage(message)
         .then((result) => {
-          this.loader.show()
+          this.loader.show();
           // this.chatService.sendNotificationByIdentity(this.msgBody).subscribe((data)=>{
           //   this.loader.hide()
           // },
@@ -638,7 +643,6 @@ debugger
   }
 
   deleteMsg(event: any, data) {
-
     this.loader.show();
     data
       .remove()
@@ -654,7 +658,6 @@ debugger
       });
   }
   deleteConversation(event) {
-
     this.loader.show();
     this.currentConversation
       .delete()
@@ -850,7 +853,7 @@ debugger
     this.chatService.getToken(this.userName).subscribe(
       (data: any) => {
         this.token = data.item1;
-       // this.chatService.connect(this.token);
+        // this.chatService.connect(this.token);
 
         this.CallRedirect();
       },
@@ -870,14 +873,14 @@ debugger
       //this.listen();
 
       //this.getConversationsList()
-      if(this.currentConversation== undefined || this.currentConversation == null)
-      {
+      if (
+        this.currentConversation == undefined ||
+        this.currentConversation == null
+      ) {
         this.listenToEvents();
         //this.FCMInit();
-      }
-      else{
+      } else {
         this.fetchUserChats();
-
       }
     } else {
       (error) => console.log(error);
@@ -885,89 +888,84 @@ debugger
     }
   }
   public async requestPermission() {
-    debugger
+    debugger;
     // const app = await initializeApp(environment.firebase);
     const messaging = getMessaging();
-    getToken(messaging,
-     { vapidKey: environment.firebase.vapidKey}).then(
-       (currentToken) => {
-        debugger
-         if (currentToken) {
-           console.log("Hurraaa!!! we got the token.....");
-           console.log(currentToken);
-           debugger
-            this.BrowserToken = currentToken;
-            // this.conSub = this.chatService.chatConnectedEmitter.subscribe( () => {
-            //   debugger
-              let a=  this.chatService.chatClient
-              this.client.setPushRegistrationId('fcm',  this.BrowserToken)
-              //.then(async (returnedToken) => {
-                //console.log('Token registered successfully:', returnedToken);
-            try{
+    getToken(messaging, { vapidKey: environment.firebase.vapidKey })
+      .then((currentToken) => {
+        debugger;
+        if (currentToken) {
+          console.log('Hurraaa!!! we got the token.....');
+          console.log(currentToken);
+          debugger;
+          this.BrowserToken = currentToken;
+          // this.conSub = this.chatService.chatConnectedEmitter.subscribe( () => {
+          //   debugger
+          let a = this.chatService.chatClient;
+          this.client.setPushRegistrationId('fcm', this.BrowserToken);
+          //.then(async (returnedToken) => {
+          //console.log('Token registered successfully:', returnedToken);
+          try {
+            onMessage(messaging, (payload) => {
+              debugger;
+              alert(payload.data.twi_body);
+              console.log(
+                'New foreground notification from Firebase Messaging!',
+                payload.notification
+              );
+              console.log(payload);
+              this.client.handlePushNotification(payload);
+            });
+          } catch (e) {
+            console.log(e);
+          }
 
-              onMessage(messaging,(payload) => {
-                debugger
-                alert(payload.data.twi_body)
-                console.log(
-                  'New foreground notification from Firebase Messaging!',
-                  payload.notification
-                );
-                console.log(payload)
-                 this.client.handlePushNotification(payload);
-            })
+          // })
+          // .catch(error => {
+          //   debugger
+          //     console.error('Error occurred:', error);
+          // });
 
-            }
-            catch (e){
-              console.log(e)
-            }
-
-           // })
-            // .catch(error => {
-            //   debugger
-            //     console.error('Error occurred:', error);
-            // });
-
-            // })
-
-         } else {
-           console.log('No registration token available. Request permission to generate one.');
-         }
-
-     }).catch((err) => {
+          // })
+        } else {
+          console.log(
+            'No registration token available. Request permission to generate one.'
+          );
+        }
+      })
+      .catch((err) => {
         console.log('An error occurred while retrieving token. ', err);
-    });
+      });
   }
   listen() {
     const messaging1 = (async () => {
       try {
-          const isSupportedBrowser = await isSupported();
-          if (isSupportedBrowser) {
-            console.log(isSupportedBrowser)
-              //return getMessaging(messaging1);
-          }
-          console.log('Firebase not supported this browser');
-          return null;
+        const isSupportedBrowser = await isSupported();
+        if (isSupportedBrowser) {
+          console.log(isSupportedBrowser);
+          //return getMessaging(messaging1);
+        }
+        console.log('Firebase not supported this browser');
+        return null;
       } catch (err) {
-          console.log(err);
-          return null;
+        console.log(err);
+        return null;
       }
-      })();
-
+    })();
 
     // onMessage(messaging, (payload) => {
     //   console.log('Message received. ', payload);
     //   this.client.handlePushNotification(payload);
     //   this.messaging=payload;
     // });
-
   }
   listenToEvents() {
     this.loader.show();
 
     this.client.on('initialized', () => {
-      debugger
+      debugger;
       console.log('Client initialized');
-      this. requestPermission()
+      this.requestPermission();
       this.fetchUserChats();
     });
 
@@ -1040,12 +1038,12 @@ debugger
       console.log('conversationRemoved', conv);
     });
     this.client.on('pushNotification', (pushNotification: PushNotification) => {
-      debugger
+      debugger;
       this.showNotification(pushNotification);
       // pushNotification was received by the client
-      debugger
-      console.log(pushNotification)
-  });
+      debugger;
+      console.log(pushNotification);
+    });
     this.client.on('messageAdded', async (msg: Message) => {
       console.log('Message added', msg);
       //const messaging = getMessaging();
@@ -1077,8 +1075,8 @@ debugger
 
     this.loader.hide();
   }
-  public async getNotificationMsg(msg){
-    debugger
+  public async getNotificationMsg(msg) {
+    debugger;
     // const messaging1 = (async () => {
     //   try {
     //       const isSupportedBrowser = await isSupported();
@@ -1094,34 +1092,34 @@ debugger
     //   }
     //   })();
 
-      const messaging = getMessaging();
+    const messaging = getMessaging();
 
-      onMessage(messaging, (payload) => {
-        debugger
-        console.log('Message received. ', payload);
-        this.client.handlePushNotification(payload);
-        //this.messaging=payload;
-      });
+    onMessage(messaging, (payload) => {
+      debugger;
+      console.log('Message received. ', payload);
+      this.client.handlePushNotification(payload);
+      //this.messaging=payload;
+    });
 
-//       const onMessageListener = async () =>
-//   new Promise((resolve) =>
-//     (async () => {
-//         const messagingResolve = await messaging;
-//         onMessage(messagingResolve, (payload) => {
-//             // console.log('On message: ', messaging, payload);
-//             debugger
-//             resolve(payload);
-//         });
-//     })()
-// );
-  //   // onMessage(msg, (payload) =>  {
-  //   // debugger
-  //   // console.log('Message received. ', payload);
-  //   // this.client.handlePushNotification(payload);
-  //   // this.messaging=payload;
+    //       const onMessageListener = async () =>
+    //   new Promise((resolve) =>
+    //     (async () => {
+    //         const messagingResolve = await messaging;
+    //         onMessage(messagingResolve, (payload) => {
+    //             // console.log('On message: ', messaging, payload);
+    //             debugger
+    //             resolve(payload);
+    //         });
+    //     })()
+    // );
+    //   // onMessage(msg, (payload) =>  {
+    //   // debugger
+    //   // console.log('Message received. ', payload);
+    //   // this.client.handlePushNotification(payload);
+    //   // this.messaging=payload;
 
-  // });
-}
+    // });
+  }
   fetchUserChats() {
     this.loader.show();
     this.chatList = [];
@@ -1242,7 +1240,6 @@ debugger
     this.currentConversation
       .getMessages(30, skip)
       .then(async (result) => {
-
         this.messages = [...result.items, ...this.messages];
         if (!skip) {
           let resetTo =
@@ -1292,7 +1289,6 @@ debugger
               this.toastr.success('Added Participant :' + this.identity);
             })
             .catch((err) => {
-
               this.modalService.dismissAll();
               this.loader.hide();
               console.log(err.body);
@@ -1325,13 +1321,12 @@ debugger
       this.currentConversation
         .addNonChatParticipant(proxyAddress, address, attributes)
         .then((a) => {
-
           console.log(a, 'a');
           this.currentConversation.join();
           this.modalService.dismissAll();
           this.connectTwilio();
           this.toastr.success('Added Participant :' + this.phoneNumber);
-          this.phoneNumber=''
+          this.phoneNumber = '';
           this.loader.hide();
         })
         .catch((err) => {
@@ -1346,7 +1341,7 @@ debugger
   AddNewConversation() {
     this.loader.show();
     if (this.newUser != undefined || this.newUser != null) {
-          this.client
+      this.client
         .getUser(this.newUser)
         .then((res) => {
           this.client
@@ -1355,7 +1350,7 @@ debugger
             })
             .then(async (channel: Conversation) => {
               channel.join().then(async () => {
-                debugger
+                debugger;
                 await channel.setAllMessagesUnread();
                 // added code for channel with friendly name
                 channel.add(this.newUser).then(() => {
@@ -1395,9 +1390,6 @@ debugger
           }, 2000);
           this.newUser = null;
         });
-
-
-
     }
   }
   CreateGroup() {
@@ -1406,7 +1398,6 @@ debugger
       (this.channelIdentity != null || this.channelIdentity != undefined) &&
       this.selectedUsers.length > 0
     ) {
-
       this.client
         .createConversation({
           uniqueName: this.channelIdentity,
@@ -1434,7 +1425,8 @@ debugger
             // e.target.closest('li').classList.add('active');
             // this.showChatMsg(this.ChannelName, this.currentConversation)
             this.toastr.success(
-              'Group created with channel:' + this.currentConversation.friendlyName
+              'Group created with channel:' +
+                this.currentConversation.friendlyName
             );
             //this.loader.hide();
           });
@@ -1446,7 +1438,6 @@ debugger
           console.log(error.body);
           this.toastr.error(error.body.message);
         });
-
     } else {
       this.toastr.error('Please enter valid fields');
       this.loader.hide();
@@ -1456,36 +1447,42 @@ debugger
 
   //Video Chat
   public async AddRoom() {
-    this.loader.show()
+    this.loader.show();
     await this.chatService.getVideoChatToken(this.userName).subscribe(
       (data: any) => {
         this.videotoken = data.item1;
         connect(this.videotoken, {
           audio: true,
           name: this.roomName,
-          video: { width: 640 }
-        }).then(room => {
-          this.modalService.dismissAll();
-          this.loader.hide()
-                    console.log(room)
-                    console.log(`Successfully joined a Room: ${room}`);
-                    room.on('participantConnected', participant => {
-                      debugger
-                      console.log(`A remote Participant connected: ${participant}`);
-                    });
-                  }, (error) => {
-                    console.error(`Unable to connect to Room: ${error.message}`);
-                  });
-              },
+          video: { width: 50, height: 150 },
+        }).then(
+          (room) => {
+            this.modalService.dismissAll();
+            this.loader.hide();
+            console.log(room);
+            console.log(`Successfully joined a Room: ${room}`);
+            room.on('participantConnected', (participant) => {
+              debugger;
+              console.log(`A remote Participant connected: ${participant}`);
+            });
+          },
+          (error) => {
+            console.error(`Unable to connect to Room: ${error.message}`);
+          }
+        );
+      },
       (error) => {
         this.toastr.error(error);
         this.loader.hide();
-        return
+        return;
       }
     );
   }
-  public async JoinVideoChat(){
-    this.loader.show()
+  public async JoinVideoChat() {
+    const remoteParticipant = document.getElementById('remoteParticipant');
+    const remoteIdentity = document.getElementById('remoteIdentity');
+
+    this.loader.show();
     await this.chatService.getVideoChatToken(this.userName).subscribe(
       (data: any) => {
         this.modalService.dismissAll();
@@ -1493,175 +1490,220 @@ debugger
         connect(this.videotoken, {
           audio: true,
           name: this.joinRoomName,
-          video: { width: 50, height: 150 }
-        }).then(room => {
-          this.loader.hide()
-          this.roomObj = room;
-          console.log(room)
-          this.isVideoChat=true
-          console.log(`Successfully joined a Room: ${room}`);
-          createLocalVideoTrack().then(track=> {
-            debugger
-            const localMediaContainer = document.getElementById('local-media-ctr');
-            localMediaContainer.appendChild(track.attach());
-            const element = track.attach();
-            this.renderer.setStyle(element, 'height', '500px');
-            this.renderer.setStyle(element, 'max-width', '200px');
-          });
-          this.roomParticipants = room.participants;
-                    // room.participants.forEach(participant => {
-                    //  //this.attachParticipantTracks(participant);
-                    //   });
+          video: { width: 100, height: 150 },
+        }).then(
+          (room) => {
+            this.loader.hide();
+            this.toastr.success('Joined room:' + room.name);
+            this.roomObj = room;
+            console.log(room);
+            this.isVideoChat = true;
+            console.log(`Successfully joined a Room: ${room}`);
 
-          room.on('participantDisconnected', (participant) => {
-            this.detachTracks(participant);
-          });
+            createLocalVideoTrack().then((track) => {
+              debugger;
+              const localMediaContainer =     document.getElementById('localParticipant');
 
-          room.on('participantConnected', participant => {
-  debugger
-                      console.log(`A remote Participant connected: ${participant}`);
-                      participant.tracks.forEach(function(track) {
-                        createLocalVideoTrack().then(track=> {
-                          debugger
-                          const localMediaContainer = document.getElementById('remote-media-div');
-                          localMediaContainer.appendChild(track.attach());
-                          const element = track.attach();
-                          this.renderer.setStyle(element, 'height', '500px');
-                          this.renderer.setStyle(element, 'max-width', '200px');
-                        });
-                        //document.getElementById('remote-media-div').appendChild(track.attach());
-                      });
+              localMediaContainer.appendChild(track.attach());
+              const element = track.attach();
 
-                      //this.attachParticipantTracks(participant);
-                      // participant.on('trackPublished', track => {
-                      //   createLocalVideoTrack().
-                      //   const element = track.attach();
-                      //   this.renderer.data.id = track.trackSid;
-                      //   this.renderer.setStyle(element, 'height', '100%');
-                      //   this.renderer.setStyle(element, 'max-width', '100%');
-                      //   //this.renderer.appendChild(this.remoteVideo.nativeElement, element);
-                      //   });
+              const localParticipant = room.localParticipant;
+            this.localParticipant = localParticipant.identity;
 
-                      // participant.tracks.forEach(publication => {
-                      //   this.trackPublished(publication, participant);
-                      //   // if (publication.isSubscribed) {
-                      //   //   const track = publication.track;
-                      //   //   document.getElementById('remote-media-div').appendChild(track.attach());
-                      //   // }
-                      // });
+            const tracksDiv = document.createElement('div');
+              tracksDiv.setAttribute('id', localParticipant.sid);
+              remoteParticipant.appendChild(tracksDiv);
+              remoteIdentity.innerHTML = localParticipant.identity;
 
-                      participant.on('trackSubscribed', track => {
-                     // document.getElementById('remote-media-div').appendChild(track.attach());
-                      });
-                    });
-                    const localParticipant = room.localParticipant;
-                    this.localParticipant = localParticipant.identity
-console.log(`Connected to the Room as LocalParticipant "${localParticipant.identity}"`);
+            // localParticipant.publishTrack(track).then(localTrackPublication => {
+            //   console.log(localTrackPublication)
+            //   //console.log(`Track`+ ${track.name}+' was published with SID' +${localTrackPublication.tracksid})
+            // })
+            });
 
-// Log any Participants already connected to the Room
-room.participants.forEach(participant => {
-  console.log(`Participant "${participant.identity}" is connected to the Room`);
-});
+            this.roomParticipants = room.participants;
+            // room.participants.forEach(participant => {
+            //  //this.attachParticipantTracks(participant);
+            //   });
+            debugger;
 
-// Log new Participants as they connect to the Room
-room.once('participantConnected', participant => {
-  console.log(`Participant "${participant.identity}" has connected to the Room`);
-});
+            room.on('participantDisconnected', (participant) => {
+              console.log('disconnected');
+              // this.detachTracks(participant);
+            });
 
-// Log Participants as they disconnect from the Room
-room.once('participantDisconnected', participant => {
-  console.log(`Participant "${participant.identity}" has disconnected from the Room`);
-});
-                  }, (error) => {
-                    console.error(`Unable to connect to Room: ${error.message}`);
-                  });
+            room.on('participantConnected', (participant) => {
+              this.toastr.info(participant.identity + 'joined the room');
+              console.log(
+                `A remote Participant connected: ${participant.identity}`
+              );
+              debugger;
 
-              },
+              const tracksDiv = document.createElement('div');
+              tracksDiv.setAttribute('id', participant.sid);
+              remoteParticipant.appendChild(tracksDiv);
+              remoteIdentity.innerHTML = participant.identity;
+
+              //           const div = document.createElement('div');
+              // div.id = participant.sid;
+              // div.innerText = participant.identity;
+
+              participant.on('trackSubscribed', (track) =>
+                this.trackSubscribed(tracksDiv, track)
+              );
+              participant.on('trackUnsubscribed', this.trackUnsubscribed);
+
+              participant.tracks.forEach((publication) => {
+                if (publication.isSubscribed) {
+                  this.trackSubscribed(tracksDiv, publication.track);
+                }
+              });
+
+              document.body.appendChild(tracksDiv);
+              // participant.tracks.forEach(publication => {
+              // if (publication.isSubscribed) {
+              //   const track = publication.track;
+              //     document.getElementById('remote-media-div').appendChild(track.attach());
+              //   }
+              // });
+              // participant.on('trackSubscribed', track => {
+              //   document.getElementById('remote-media-div').appendChild(track.attach());
+              //   });
+            });
+
+            room.participants.forEach((participant) => {
+              participant.tracks.forEach((publication) => {
+                if (publication.track) {
+                  console.log(publication.track);
+                  //document.getElementById('remote-media-div').appendChild(publication.track.attach());
+                }
+              });
+
+              participant.on('trackSubscribed', (track) => {
+                debugger;
+                console.log(track);
+                const div = document.createElement('div');
+                div.id = participant.sid;
+                div.innerText = participant.identity;
+                if (track.kind == 'video') {
+                  track.dimensions.height = 3000;
+                  track.dimensions.width = 120000;
+                }
+                this.trackSubscribed(div, track);
+                //document.getElementById('remote-media-div').appendChild(track.attach());
+              });
+            });
+
+            // Log Participants as they disconnect from the Room
+            room.once('participantDisconnected', (participant) => {
+              this.toastr.success(
+                `Participant "${participant.identity}" has disconnected from the Room`
+              );
+              console.log(
+                `Participant "${participant.identity}" has disconnected from the Room`
+              );
+            });
+          },
+          (error) => {
+            console.error(`Unable to connect to Room: ${error.message}`);
+          }
+        );
+      },
       (error) => {
         this.toastr.error(error);
         this.loader.hide();
-        return
+        return;
       }
     );
-
+  }
+  trackSubscribed(div, track) {
+    //   const trackElement = track.attach();
+    // div.appendChild(trackElement);
+    document.getElementById('remoteVideo').appendChild(track.attach());
+  }
+  trackUnsubscribed(track) {
+    track.detach().forEach((element) => element.remove());
   }
   RoomSearch() {}
   mute() {
-    this.roomObj.localParticipant.audioTracks.forEach(function (
-    audioTrack
-    ) {
-    audioTrack.track.disable();
+    this.roomObj.localParticipant.audioTracks.forEach(function (audioTrack) {
+      audioTrack.track.disable();
     });
     this.microphone = false;
-    }
+  }
 
-    unmute() {
-      this.roomObj.localParticipant.audioTracks.forEach(function (
-      audioTrack
-      ) {
+  unmute() {
+    this.roomObj.localParticipant.audioTracks.forEach(function (audioTrack) {
       audioTrack.track.enable();
-      });
-      this.microphone = true;
-      }
-      attachTracks(tracks) {
-        const element = tracks.attach();
-        this.renderer.data.id = tracks.sid;
-        this.renderer.setStyle(element, 'height', '100%');
-        this.renderer.setStyle(element, 'max-width', '100%');
-        //this.renderer.appendChild(this.remoteVideo.nativeElement, element);
-        }
-        startLocalVideo(): void {
-          this.roomObj.localParticipant.videoTracks.forEach(publication => {
-          const element = publication.track.attach();
-          this.renderer.data.id = publication.track.sid;
-          this.renderer.setStyle(element, 'width', '25%');
-          //this.renderer.appendChild(this.localVideo.nativeElement, element);
-          })}
+    });
+    this.microphone = true;
+  }
+  attachTracks(tracks) {
+    const element = tracks.attach();
+    this.renderer.data.id = tracks.sid;
+    this.renderer.setStyle(element, 'height', '100%');
+    this.renderer.setStyle(element, 'max-width', '100%');
+    //this.renderer.appendChild(this.remoteVideo.nativeElement, element);
+  }
+  // startLocalVideo(): void {
+  //   this.roomObj.localParticipant.videoTracks.forEach(publication => {
+  //   const element = publication.track.attach();
+  //   this.renderer.data.id = publication.track.sid;
+  //   this.renderer.setStyle(element, 'width', '25%');
+  //   //this.renderer.appendChild(this.localVideo.nativeElement, element);
+  //   })}
 
-          detachTracks(tracks): void {
-          tracks.tracks.forEach(track => {
-          let element = this.remoteVideo.nativeElement;
-          while (element.firstChild) {
-          element.removeChild(element.firstChild);
-          }});}
+  //   detachTracks(tracks): void {
+  //   tracks.tracks.forEach(track => {
+  //   let element = this.remoteVideo.nativeElement;
+  //   while (element.firstChild) {
+  //   element.removeChild(element.firstChild);
+  //   }});}
 
-          // attachParticipantTracks(participant): void {
-          //   participant.tracks.forEach(part => {
-          //   this.trackPublished(part);
-          //   });}
+  // attachParticipantTracks(participant): void {
+  //   participant.tracks.forEach(part => {
+  //   this.trackPublished(part);
+  //   });}
 
-            // trackPublished(publication) {
-            //   if (publication.isSubscribed)
-            //   this.attachTracks(publication.track);
+  // trackPublished(publication) {
+  //   if (publication.isSubscribed)
+  //   this.attachTracks(publication.track);
 
-            //   if (!publication.isSubscribed)
-            //   publication.on('subscribed', track => {
-            //   this.attachTracks(track);
-            //   });
-            //   }
+  //   if (!publication.isSubscribed)
+  //   publication.on('subscribed', track => {
+  //   this.attachTracks(track);
+  //   });
+  //   }
 
-              disconnect() {
-                if (this.roomObj && this.roomObj !== null) {
-                this.roomObj.disconnect();
-                this.roomObj = null;
-                } else this.router.navigate(['thanks']);
-                }
+  disconnect() {
+    if (this.roomObj && this.roomObj !== null) {
+      this.roomObj.disconnect();
+      this.roomObj = null;
+    } else this.router.navigate(['thanks']);
+  }
 
-                trackPublished(publication, participant) {
-                  console.log(`RemoteParticipant ${participant.identity} published a RemoteTrack: ${publication}`);
-                  // assert(!publication.isSubscribed);
-                  // assert.equal(publication.track, null);
+  trackPublished(publication, participant) {
+    console.log(
+      `RemoteParticipant ${participant.identity} published a RemoteTrack: ${publication}`
+    );
+    // assert(!publication.isSubscribed);
+    // assert.equal(publication.track, null);
 
-                  publication.on('subscribed', track => {
-                    console.log(`LocalParticipant subscribed to a RemoteTrack: ${track}`);
-                    // assert(publication.isSubscribed);
-                    // assert(publication.track, track);
-                  });
+    publication.on('subscribed', (track) => {
+      console.log(`LocalParticipant subscribed to a RemoteTrack: ${track}`);
+      // assert(publication.isSubscribed);
+      // assert(publication.track, track);
+    });
 
-                  publication.on('unsubscribed', track => {
-                    console.log(`LocalParticipant unsubscribed from a RemoteTrack: ${track}`);
-                    // assert(!publication.isSubscribed);
-                    // assert.equal(publication.track, null);
-                  });
-                }
+    publication.on('unsubscribed', (track) => {
+      console.log(`LocalParticipant unsubscribed from a RemoteTrack: ${track}`);
+      // assert(!publication.isSubscribed);
+      // assert.equal(publication.track, null);
+    });
+  }
+
+
+  CallDisconnect(){
+
+  }
 }

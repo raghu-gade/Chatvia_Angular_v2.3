@@ -22,11 +22,11 @@ export class AppComponent implements OnInit {
   message:any
   BrowserToken:any
   constructor(public translate: TranslateService,private oauthService: OAuthService, private router: Router, private spinnerService: SpinnerService, private authorizeService: AuthorizeService,private userIdle: UserIdleService) {
-    // translate.addLangs(['en', 'es', 'it', 'ru', 'de']);
-    // translate.setDefaultLang('en');
+    translate.addLangs(['en', 'es', 'it', 'ru', 'de']);
+    translate.setDefaultLang('en');
 
-    // const browserLang = translate.getBrowserLang();
-    // translate.use(browserLang.match(/en|it|es|ru|de/) ? browserLang : 'en');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|it|es|ru|de/) ? browserLang : 'en');
     this.configure();
   }
   ngOnInit(): void {

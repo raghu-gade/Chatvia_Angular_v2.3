@@ -27,12 +27,13 @@ import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { AngularFireDatabaseModule } from "@angular/fire/compat/database";
 import { AngularFireMessagingModule } from "@angular/fire/compat/messaging";
 import { MainComponent } from './Startup/main/main.component';
-import { OAuthModule } from 'angular-oauth2-oidc';
+
 import { AppInitializerService, serverConfigInitializerFactory } from './Startup/appInitializer';
 import { AuthorizeService } from './Startup/authorizeservice';
 import { ServerConfigSettingsService } from './Startup/ServerConfigSettingsService';
 import { AuthGuardService } from './authguard/AuthGuardService';
 import { ApplicationHttpInterceptor } from './Startup/httpInterceptor';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 initializeApp(environment.firebase);
 if (environment.defaultauth === 'firebase') {
@@ -58,7 +59,7 @@ export function createTranslateLoader(http: HttpClient): any {
     BrowserModule,
     AppRoutingModule,
     ChatModule,
-    OAuthModule.forRoot(),
+   OAuthModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

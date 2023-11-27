@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule, isDevMode } from '@angular/core';
+import { APP_INITIALIZER, NgModule, isDevMode } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -26,6 +26,13 @@ import { AngularFireStorageModule } from "@angular/fire/compat/storage";
 import { AngularFirestoreModule } from "@angular/fire/compat/firestore";
 import { AngularFireDatabaseModule } from "@angular/fire/compat/database";
 import { AngularFireMessagingModule } from "@angular/fire/compat/messaging";
+import { MainComponent } from './Startup/main/main.component';
+import { OAuthModule } from 'angular-oauth2-oidc';
+import { AppInitializerService, serverConfigInitializerFactory } from './Startup/appInitializer';
+import { AuthorizeService } from './Startup/authorizeservice';
+import { ServerConfigSettingsService } from './Startup/ServerConfigSettingsService';
+import { AuthGuardService } from './authguard/AuthGuardService';
+import { ApplicationHttpInterceptor } from './Startup/httpInterceptor';
 
 initializeApp(environment.firebase);
 if (environment.defaultauth === 'firebase') {
@@ -42,7 +49,8 @@ export function createTranslateLoader(http: HttpClient): any {
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    MainComponent
   ],
   imports: [
     HttpClientModule,
@@ -50,6 +58,7 @@ export function createTranslateLoader(http: HttpClient): any {
     BrowserModule,
     AppRoutingModule,
     ChatModule,
+    OAuthModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -79,6 +88,9 @@ export function createTranslateLoader(http: HttpClient): any {
     AngularFireMessagingModule
   ],
   providers: [
+    AppInitializerService,ServerConfigSettingsService,AuthorizeService,AuthGuardService,
+    { provide: APP_INITIALIZER, useFactory: serverConfigInitializerFactory, deps: [AppInitializerService], multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ApplicationHttpInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },

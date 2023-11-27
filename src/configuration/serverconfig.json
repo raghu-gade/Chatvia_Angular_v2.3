@@ -1,0 +1,13 @@
+[
+  {
+    "ServerName": "",
+    "BaseUrl": "",
+    "HttpsBaseUrl": null,
+    "DefaultHeaders": [],
+    "IsHttps": false,
+    "IsAuthorized": true,
+    "IdentityServerAddress": "",
+    "WebAddress": "",
+    "ClientID": ""
+  }
+]

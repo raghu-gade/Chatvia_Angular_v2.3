@@ -28,6 +28,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/configuration",
               "src/firebase-messaging-sw.js",
               "src/manifest.json",
               "src/manifest.webmanifest",
@@ -113,7 +114,8 @@
               "src/firebase-messaging-sw.js",
               "src/manifest.json",
               "src/manifest.webmanifest",
-              "src/service-worker.js"
+              "src/service-worker.js",
+              "src/configuration"
             ],
             "styles": [
               "src/styles.scss",

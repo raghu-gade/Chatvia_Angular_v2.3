@@ -35,31 +35,31 @@
       <ul class="nav nav-pills side-menu-nav justify-content-center" role="tablist">
         <li class="nav-item" ngbTooltip="Profile">
           <a class="nav-link" id="pills-user-tab" (click)="activetab=1" href="javascript: void(0);"
-             [ngClass]="{'active': activetab === 1}">
+            [ngClass]="{'active': activetab === 1}">
             <i class="ri-user-2-line"></i>
           </a>
         </li>
         <li class="nav-item" ngbTooltip="Chats">
           <a class="nav-link active" id="pills-chat-tab" (click)="activetab=2" href="javascript: void(0);"
-             [ngClass]="{'active': activetab === 2}">
+            [ngClass]="{'active': activetab === 2}">
             <i class="ri-message-3-line"></i>
           </a>
         </li>
         <li class="nav-item" ngbTooltip="Groups">
           <a class="nav-link pills-groups-tab" id="pills-groups-tab" (click)="activetab=3" href="javascript: void(0);"
-             [ngClass]="{'active': activetab === 3}">
+            [ngClass]="{'active': activetab === 3}">
             <i class="ri-group-line"></i>
           </a>
         </li>
         <li class="nav-item" ngbTooltip="Contacts" placement="top">
           <a class="nav-link" id="pills-contacts-tab" (click)="activetab=4" href="javascript: void(0);"
-             [ngClass]="{'active': activetab === 4}">
+            [ngClass]="{'active': activetab === 4}">
             <i class="ri-contacts-line"></i>
           </a>
         </li>
         <li class="nav-item" ngbTooltip="Video" placement="top">
           <a class="nav-link" id="pills-contacts-tab" (click)="activetab=5" href="javascript: void(0);" src
-             [ngClass]="{'active': activetab === 5}">
+            [ngClass]="{'active': activetab === 5}">
             <img src="assets/images/video-icon.png" alt="" width="24" height="24" style="color:#878a92">
           </a>
         </li>
@@ -95,13 +95,14 @@
 
         <li class="nav-item btn-group dropup profile-user-dropdown" ngbDropdown placement="top-left">
           <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" ngbDropdownToggle
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="ri-global-line"></i>
           </a>
           <div class="dropdown-menu" ngbDropdownMenu>
             <a class="dropdown-item" *ngFor="let item of listLang" (click)="setLanguage(item.lang)"
-               [ngClass]="{'active': lang === item.lang}" href="javascript: void(0);">
-              <img src="{{item.flag}}" alt="user-image" class="me-1" height="12"> <span class="align-middle">{{item.text}}</span>
+              [ngClass]="{'active': lang === item.lang}" href="javascript: void(0);">
+              <img src="{{item.flag}}" alt="user-image" class="me-1" height="12"> <span
+                class="align-middle">{{item.text}}</span>
             </a>
           </div>
         </li>
@@ -115,23 +116,17 @@
 
         <li class="nav-item btn-group dropup profile-user-dropdown" ngbDropdown placement="top-left">
           <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" ngbDropdownToggle
-             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="assets/images/users/avatar-1.jpg" alt="" class="profile-user rounded-circle">
           </a>
           <div class="dropdown-menu" ngbDropdownMenu>
-            <a class="dropdown-item" href="javascript:void(0);">
-              {{'chat.profiledropdown.profile' | translate}} <i class="ri-profile-line float-end text-muted"></i>
-            </a>
-            <a class="dropdown-item" href="javascript:void(0);">
-              {{'chat.profiledropdown.setting' | translate}} <i class="ri-settings-3-line float-end text-muted"></i>
-            </a>
+            <a class="dropdown-item" href="javascript:void(0);">{{'chat.profiledropdown.profile' | translate}} <i
+                class="ri-profile-line float-end text-muted"></i></a>
+            <a class="dropdown-item" href="javascript:void(0);">{{'chat.profiledropdown.setting' | translate}} <i
+                class="ri-settings-3-line float-end text-muted"></i></a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="javascript: void(0);" (click)="logout()">
-              {{
-'chat.profiledropdown.logout' |
-              translate
-              }} <i class="ri-logout-circle-r-line float-end text-muted"></i>
-            </a>
+            <a class="dropdown-item" href="javascript: void(0);" (click)="logout()">{{'chat.profiledropdown.logout' |
+              translate}} <i class="ri-logout-circle-r-line float-end text-muted"></i></a>
           </div>
         </li>
       </ul>
@@ -156,8 +151,8 @@
             <div class="user-chat-nav float-end">
               <div ngbTooltip="Add Conversation">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-link text-decoration-none text-muted font-size-18 py-0" data-toggle="modal"
-                        data-target="#addContact-exampleModal" (click)="OpenNewConversation(newchat)">
+                <button type="button" class="btn btn-link text-decoration-none text-muted font-size-18 py-0"
+                  data-toggle="modal" data-target="#addContact-exampleModal" (click)="OpenNewConversation(newchat)">
                   <i class="ri-user-add-line"></i>
                 </button>
               </div>
@@ -170,12 +165,13 @@
                   <i class="ri-search-line search-icon font-size-18"></i>
                 </span>
                 <input type="text" class="form-control bg-light"
-                       placeholder="{{'chat.tabs.chats.search.placeholder' | translate}}"
-                       aria-label="Search messages or users" aria-describedby="basic-addon1" (keyup)="ContactSearch()"
-                       id="searchContact" autocomplete="off">
+                  placeholder="{{'chat.tabs.chats.search.placeholder' | translate}}"
+                  aria-label="Search messages or users" aria-describedby="basic-addon1" (keyup)="ContactSearch()"
+                  id="searchContact" autocomplete="off">
               </div>
             </div>
           </div> <!-- .p-4 -->
+
           <!-- Start user status -->
           <!-- <div class="px-4 pb-4" dir="ltr">
             <owl-carousel-o [options]="customOptions">
@@ -244,8 +240,11 @@
 
             </owl-carousel-o>
           </div> -->
+
           <!-- end user status carousel -->
+
           <!-- end user status -->
+
           <!-- Start chat-message-list -->
           <div class="px-2">
             <h5 class="mb-3 px-3 font-size-16">Chats</h5>
@@ -257,9 +256,9 @@
                     <div class="d-flex">
                       <div class="chat-user-img online align-self-center me-3 ms-0">
                         <img src="assets/images/user.png" class="rounded-circle avatar-xs" *ngIf="user.users.length<=2"
-                             alt="">
-                        <img src="assets/images/group-icon.png" class="rounded-circle avatar-xs" *ngIf="user.users.length>2"
-                             alt="">
+                          alt="">
+                        <img src="assets/images/group-icon.png" class="rounded-circle avatar-xs"
+                          *ngIf="user.users.length>2" alt="">
                         <!-- <div class="avatar-xs" >
                           <span class="avatar-title rounded-circle bg-soft-primary text-primary">
                             {{(user.friendly_name | translate)}}
@@ -276,10 +275,15 @@
                             <span class="dot ms-1"></span>
                             <span class="dot ms-1"></span>
                           </span></p> -->
-                        <p class="chat-user-message text-truncate mb-0" *ngIf="user.lastMessage != undefined">{{user?.lastMessage.body || ''}}</p>
+                        <p class="chat-user-message text-truncate mb-0" *ngIf="user.lastMessage != undefined">
+                          {{user?.lastMessage.body || ''}}</p>
                       </div>
-                      <div class="font-size-11" *ngIf="(user?.chat?.dateUpdated |date:'dd/MM/yyyy')==(isToday|date:'dd/MM/yyyy')">{{user?.chat?.dateUpdated | date: 'shortTime'}}</div>
-                      <div class="font-size-11" *ngIf="(user?.chat?.dateUpdated|date:'dd/MM/yyyy')!=(isToday|date:'dd/MM/yyyy')">{{user?.chat?.dateUpdated | date: 'dd/MM'}}</div>
+                      <div class="font-size-11"
+                        *ngIf="(user?.chat?.dateUpdated |date:'dd/MM/yyyy')==(isToday|date:'dd/MM/yyyy')">
+                        {{user?.chat?.dateUpdated | date: 'shortTime'}}</div>
+                      <div class="font-size-11"
+                        *ngIf="(user?.chat?.dateUpdated|date:'dd/MM/yyyy')!=(isToday|date:'dd/MM/yyyy')">
+                        {{user?.chat?.dateUpdated | date: 'dd/MM'}}</div>
 
                       <div class="unread-message" *ngIf="user?.unreadCount>0">
                         <span class="badge badge-soft-danger rounded-pill">{{user?.unreadCount}}</span>
@@ -299,6 +303,7 @@
         <!-- Start chats content -->
       </div>
       <!-- End chats tab-pane -->
+
       <!-- Start groups tab-pane -->
       <div id="pills-groups" role="tabpanel" aria-labelledby="pills-groups-tab" *ngIf="activetab === 3">
         <!-- Start Groups content -->
@@ -308,7 +313,7 @@
               <div ngbTooltip="Create group">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-link text-decoration-none text-muted font-size-18 py-0"
-                        data-toggle="modal" data-target="#addgroup-exampleModal" (click)="openGroupModal(group)">
+                  data-toggle="modal" data-target="#addgroup-exampleModal" (click)="openGroupModal(group)">
                   <i class="ri-group-line me-1"></i>
                 </button>
               </div>
@@ -320,30 +325,30 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title font-size-16" id="addgroup-exampleModalLabel">
-                    Add Group
-                  </h5>
+                    Add Group</h5>
                   <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
-                          (click)="modal.dismiss('Cross click')">
+                    (click)="modal.dismiss('Cross click')">
                   </button>
                 </div>
                 <div class="modal-body p-4">
                   <form>
                     <div class="mb-4">
-                      <label class="form-label" for="addgroupname-input">  Group Name</label>
-                      <input type="text" class="form-control" id="channelIdentity" name="channelIdentity" [(ngModel)]="channelIdentity" placeholder="EnterIdentity" autocomplete="off">
+                      <label class="form-label" for="addgroupname-input"> Group Name</label>
+                      <input type="text" class="form-control" id="channelIdentity" name="channelIdentity"
+                        [(ngModel)]="channelIdentity" placeholder="EnterIdentity" autocomplete="off">
                     </div>
                     <div class="mb-4">
                       <label class="form-label">Group Members</label>
                       <div class="mb-3">
                         <button class="btn btn-light btn-sm" type="button" data-toggle="collapse"
-                                (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
-                                aria-controls="collapseExample">
+                          (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed"
+                          aria-controls="collapseExample">
                           {{'chat.tabs.groups.modal.form.members.button.text' | translate}}
                         </button>
                       </div>
 
                       <div class="collapse" id="groupmembercollapse" #collapse="ngbCollapse"
-                           [(ngbCollapse)]="isCollapsed">
+                        [(ngbCollapse)]="isCollapsed">
                         <div class="card border">
                           <div class="card-header">
                             <h5 class="font-size-15 mb-0">{{'chat.tabs.contacts.title' | translate}}</h5>
@@ -357,8 +362,10 @@
                                 <ul class="list-unstyled contact-list">
                                   <li *ngFor="let item of item.contacts">
                                     <div class="form-check">
-                                      <input type="checkbox" class="form-check-input" id="memberCheck1" (change)="selectUsers($event, item)">
-                                      <label class="form-check-label" for="memberCheck1">{{item.identity | translate}}</label>
+                                      <input type="checkbox" class="form-check-input" id="memberCheck1"
+                                        (change)="selectUsers($event, item)">
+                                      <label class="form-check-label" for="memberCheck1">{{item.identity |
+                                        translate}}</label>
                                     </div>
                                     <!-- <div class="d-flex align-items-center">
                                       <div class="flex-grow-1">
@@ -383,12 +390,8 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-link" data-dismiss="modal"
-                          (click)="modal.dismiss('Cross click')">
-                    {{
-'chat.tabs.groups.modal.form.button.close' |
-                    translate
-                    }}
-                  </button>
+                    (click)="modal.dismiss('Cross click')">{{'chat.tabs.groups.modal.form.button.close' |
+                    translate}}</button>
                   <button type="button" class="btn btn-primary" (click)="CreateGroup()">Create Group </button>
                 </div>
               </div>
@@ -401,8 +404,8 @@
                   <i class="ri-search-line search-icon font-size-18"></i>
                 </button>
                 <input type="text" class="form-control bg-light"
-                       placeholder="{{'chat.tabs.groups.search.placeholder' | translate}}" (keyup)="GroupSearch()"
-                       id="searchGroup" autocomplete="off">
+                  placeholder="{{'chat.tabs.groups.search.placeholder' | translate}}" (keyup)="GroupSearch()"
+                  id="searchGroup" autocomplete="off">
               </div>
             </div>
             <!-- end search-box -->
@@ -422,8 +425,7 @@
                       </div>
                     </div>
                     <div class="flex-grow-1 overflow-hidden">
-                      <h5 class="text-truncate font-size-14 mb-0">
-                        #{{item?.chat?.friendlyName | translate}}
+                      <h5 class="text-truncate font-size-14 mb-0">#{{item?.chat?.friendlyName | translate}}
                       </h5>
                       <div class="unread-message" *ngIf="item?.unreadCount>0">
                         <span class="badge badge-soft-danger rounded-pill">{{item?.unreadCount}}</span>
@@ -439,16 +441,19 @@
         <!-- End Groups content -->
       </div>
       <!-- End groups tab-pane -->
+
       <!-- Start contacts tab-pane -->
       <div id="pills-contacts" role="tabpanel" aria-labelledby="pills-contacts-tab" *ngIf="activetab === 4">
         <app-contacts></app-contacts>
       </div>
       <!-- End contacts tab-pane -->
+
       <!-- Start settings tab-pane -->
       <div id="pills-setting" role="tabpanel" aria-labelledby="pills-setting-tab" *ngIf="activetab === 5">
         <!-- <div>
           <app-home></app-home>
         </div> -->
+
         <!-- Start Video Chat Side content -->
         <div>
           <div class="p-4">
@@ -456,11 +461,12 @@
               <div>
 
                 <!-- <button ngbTooltip="Start Video" type="button" class="btn btn-link text-decoration-none text-muted font-size-18 py-0" data-toggle="modal"
-                  data-target="#addContact-exampleModal" (click)="openGroupModal(createRoom)">
-                  <i class="ri-user-add-line"></i>
-                </button> -->
-                <button ngbTooltip="Join Video" type="button" class="btn btn-link text-decoration-none text-muted font-size-18 py-0"
-                        data-toggle="modal" data-target="#addgroup-exampleModal" (click)="openGroupModal(joinvideo)">
+                data-target="#addContact-exampleModal" (click)="openGroupModal(createRoom)">
+                <i class="ri-user-add-line"></i>
+              </button> -->
+                <button ngbTooltip="Join Video" type="button"
+                  class="btn btn-link text-decoration-none text-muted font-size-18 py-0" data-toggle="modal"
+                  data-target="#addgroup-exampleModal" (click)="openGroupModal(joinvideo)">
                   <i class="ri-group-line me-1"></i>
                 </button>
               </div>
@@ -472,29 +478,25 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title font-size-16" id="addgroup-exampleModalLabel">
-                    Create Room
-                  </h5>
+                    Create Room</h5>
                   <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"
-                          (click)="modal.dismiss('Cross click')">
+                    (click)="modal.dismiss('Cross click')">
                   </button>
                 </div>
                 <div class="modal-body p-4">
                   <form>
                     <div class="mb-4">
-                      <label class="form-label" for="addgroupname-input">  Room Name</label>
-                      <input type="text" class="form-control" id="roomName" name="roomName" [(ngModel)]="roomName" placeholder="EnterRoomName" autocomplete="off">
+                      <label class="form-label" for="addgroupname-input"> Room Name</label>
+                      <input type="text" class="form-control" id="roomName" name="roomName" [(ngModel)]="roomName"
+                        placeholder="EnterRoomName" autocomplete="off">
                     </div>
 
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-link" data-dismiss="modal"
-                          (click)="modal.dismiss('Cross click')">
-                    {{
-'chat.tabs.groups.modal.form.button.close' |
-                    translate
-                    }}
-                  </button>
+                    (click)="modal.dismiss('Cross click')">{{'chat.tabs.groups.modal.form.button.close' |
+                    translate}}</button>
                   <button type="button" class="btn btn-primary" (click)="AddRoom()">Create Room</button>
                 </div>
               </div>
@@ -504,8 +506,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">
-                    Join Video Room
-                  </h5>
+                    Join Video Room</h5>
                   <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')">
                   </button>
                 </div>
@@ -514,8 +515,8 @@
 
                     <div class="mb-3">
                       <label class="form-label">Enter Room Name</label>
-                      <input type="text" class="form-control" id="joinRoomName" [(ngModel)]="joinRoomName" name="joinRoomName"
-                             placeholder="Enter Room Name">
+                      <input type="text" class="form-control" id="joinRoomName" [(ngModel)]="joinRoomName"
+                        name="joinRoomName" placeholder="Enter Room Name">
                     </div>
 
                   </form>
@@ -526,14 +527,17 @@
                 </div>
               </div>
             </ng-template>
+
+
+
             <div class="search-box chat-search-box">
               <div class="input-group rounded-3">
                 <button class="input-group-text text-muted bg-light pe-1 ps-3" type="button">
                   <i class="ri-search-line search-icon font-size-18"></i>
                 </button>
                 <input type="text" class="form-control bg-light"
-                       placeholder="{{'chat.tabs.groups.search.placeholder' | translate}}" (keyup)="RoomSearch()"
-                       id="searchGroup" autocomplete="off">
+                  placeholder="{{'chat.tabs.groups.search.placeholder' | translate}}" (keyup)="RoomSearch()"
+                  id="searchGroup" autocomplete="off">
               </div>
             </div>
 
@@ -557,8 +561,8 @@
           <div class="avatar-xl mx-auto mb-4">
             <div class="avatar-title bg-secondary rounded-circle">
               <svg data-v-5e8ea5c2="" xmlns="http://www.w3.org/2000/svg" width="70px" height="65px" viewBox="0 0 24 24"
-                   fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                   class="feather feather-message-square">
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-message-square">
                 <path data-v-5e8ea5c2="" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z">
                 </path>
               </svg>
@@ -581,41 +585,24 @@
     </div>
     </div>
   </div> -->
-  <div class="media-container" >
-    <div id="localParticipant" style="padding-top: 20px;">
-      <div id='localIdentity' *ngIf="localParticipant">Me -{{localParticipant}}</div>
-    </div>
-  </div>
-  <div class="media-container">
-    <div id="remoteParticipant" style="padding-left: 100px;padding-top: 20px;">
-      <div id="remoteVideo">
-        <div id='remoteIdentity'></div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="isVideoChat" style="margin-top: 300px;">
-    <button href="javascript: void(0);" (click)="CallDisconnect()">
-      <img src="assets/images/end-call.png" alt="" width="50" height="50" style="color:#878a92">
-    </button>
-  </div>
 
   <!-- Start User chat -->
   <div class="user-chat w-100 d-none" id="chat-room">
+
     <div class="d-lg-flex">
       <!-- start chat conversation section -->
       <div class="w-100 position-relative">
-        <div class="p-3 p-lg-4 border-bottom">
+        <div class="p-3 p-lg-4 border-bottom" id="forVideoTab">
           <div class="row align-items-center">
             <div class="col-sm-4 col-8">
               <div class="d-flex align-items-center">
                 <div class="d-block d-lg-none me-2 ms-0">
                   <a href="javascript: void(0);" class="user-chat-remove text-muted font-size-16 p-2"
-                     (click)="closeUserChat()"><i class="ri-arrow-left-s-line"></i></a>
+                    (click)="closeUserChat()"><i class="ri-arrow-left-s-line"></i></a>
                 </div>
                 <div class="me-3 ms-0">
                   <img src="assets/images/user.png" class="rounded-circle avatar-xs" alt="" *ngIf="userlogo<=2">
-                  <img src="assets/images/group-icon.png" class="rounded-circle avatar-xs" *ngIf="userlogo>2"
-                       alt="">
+                  <img src="assets/images/group-icon.png" class="rounded-circle avatar-xs" *ngIf="userlogo>2" alt="">
                   <!-- <div class="avatar-xs" *ngIf="!userProfile">
                     <span class="avatar-title rounded-circle bg-soft-primary text-primary">
                       {{(userName | translate).charAt(0)}}
@@ -625,7 +612,7 @@
                 <div class="flex-grow-1 overflow-hidden">
                   <h5 class="font-size-16 mb-0 text-truncate" *ngIf="friendlyName!= ''">
                     <a href="javascript:void(0);" class="text-reset user-profile-show username"
-                       (click)="onChatInfoClicked(userInfo)">{{friendlyName}}</a>
+                      (click)="onChatInfoClicked(userInfo)">{{friendlyName}}</a>
                     <!-- <i class="ri-record-circle-fill font-size-10 d-inline-block ms-1"></i> -->
                   </h5>
                 </div>
@@ -636,14 +623,14 @@
                 <li class="list-inline-item">
                   <div class="dropdown" ngbDropdown>
                     <button class="btn nav-btn dropdown-toggle" ngbDropdownToggle type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                      aria-haspopup="true" aria-expanded="false">
                       <i class="ri-search-line"></i>
                     </button>
                     <div class="dropdown-menu p-0 dropdown-menu-right dropdown-menu-md" ngbDropdownMenu>
                       <div class="search-box p-2">
                         <input type="text" class="form-control bg-light border-0"
-                               placeholder="{{'chat.chatpanelheader.search.placeholder' | translate}}"
-                               (keyup)="MessageSearch()" id="searchMessage">
+                          placeholder="{{'chat.chatpanelheader.search.placeholder' | translate}}"
+                          (keyup)="MessageSearch()" id="searchMessage">
                       </div>
                     </div>
                   </div>
@@ -666,7 +653,7 @@
                         <ul class="list-inline mb-1">
                           <li class="list-inline-item px-2 me-2 ms-0">
                             <button type="button" class="btn btn-danger avatar-sm rounded-circle"
-                                    data-bs-dismiss="modal" (click)="modal.close('Close click')">
+                              data-bs-dismiss="modal" (click)="modal.close('Close click')">
                               <span class="avatar-title bg-transparent font-size-20">
                                 <i class="ri-close-fill"></i>
                               </span>
@@ -686,7 +673,7 @@
                 </ng-template>
                 <li class="list-inline-item d-none d-lg-inline-block me-2 ms-0">
                   <button type="button" class="btn nav-btn" data-bs-toggle="modal" data-bs-target="#videocallModal"
-                          (click)="openVideoModal(videoContent)">
+                    (click)="openVideoModal(videoContent)">
                     <i class="ri-vidicon-line"></i>
                   </button>
                 </li>
@@ -696,20 +683,21 @@
                       <div class="avatar-lg mx-auto mb-4">
                         <img src="{{friendlyName}}" alt="" class="img-thumbnail rounded-circle">
                       </div>
-                      <h5 class="text-truncate">{{(userName | translate)}}</h5>
+                      <h5 class="text-truncate">{{(friendlyName | translate)}}</h5>
                       <p class="text-muted mb-0">Start Video Call</p>
                       <div class="mt-5">
                         <ul class="list-inline mb-1">
                           <li class="list-inline-item px-2 me-2 ms-0">
                             <button type="button" class="btn btn-danger avatar-sm rounded-circle"
-                                    data-bs-dismiss="modal" (click)="modal.close('Close click')">
+                              data-bs-dismiss="modal" (click)="modal.close('Close click')">
                               <span class="avatar-title bg-transparent font-size-20">
                                 <i class="ri-close-fill"></i>
                               </span>
                             </button>
                           </li>
                           <li class="list-inline-item px-2">
-                            <button type="button" class="btn btn-success avatar-sm rounded-circle">
+                            <button type="button" class="btn btn-success avatar-sm rounded-circle"
+                              (click)="startVideoChat()">
                               <span class="avatar-title bg-transparent font-size-20">
                                 <i class="ri-vidicon-fill"></i>
                               </span>
@@ -728,22 +716,22 @@
                 <li class="list-inline-item">
                   <div class="dropdown" ngbDropdown>
                     <button class="btn nav-btn dropdown-toggle" ngbDropdownToggle type="button" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
+                      aria-haspopup="true" aria-expanded="false">
                       <i class="ri-more-fill"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
                       <a class="dropdown-item d-block d-lg-none user-profile-show" (click)="showUserProfile()"
-                         href="javascript: void(0);">
-                        {{'chat.chatpanelheader.dropdown.viewprofile' | translate}} <i class="ri-user-2-line float-end text-muted"></i>
-                      </a>
-                      <a class="dropdown-item" href="javascript:void(0);" (click)="AddPartcipant(content)" style="width:220px">Add Participant <i class="ri-archive-line float-end text-muted"></i></a>
-                      <a class="dropdown-item" href="javascript:void(0);" (click)="AddNonPartcipant(nonpartcipant)" style="width:220px">Add Non Participant <i class="ri-archive-line float-end text-muted"></i></a>
+                        href="javascript: void(0);">{{'chat.chatpanelheader.dropdown.viewprofile' | translate}} <i
+                          class="ri-user-2-line float-end text-muted"></i></a>
+                      <a class="dropdown-item" href="javascript:void(0);" (click)="AddPartcipant(content)"
+                        style="width:220px">Add Participant <i class="ri-archive-line float-end text-muted"></i></a>
+                      <a class="dropdown-item" href="javascript:void(0);" (click)="AddNonPartcipant(nonpartcipant)"
+                        style="width:220px">Add Non Participant <i class="ri-archive-line float-end text-muted"></i></a>
                       <!-- <a class="dropdown-item" href="javascript:void(0);">{{'chat.chatpanelheader.dropdown.muted' |
                         translate}} <i class="ri-volume-mute-line float-end text-muted"></i></a> -->
                       <a class="dropdown-item" href="javascript:void(0);"
-                         (click)="deleteConversation($event)">
-                        {{'chat.chatpanelheader.dropdown.delete' | translate}}<i class="ri-delete-bin-line float-end text-muted"></i>
-                      </a>
+                        (click)="deleteConversation($event)">{{'chat.chatpanelheader.dropdown.delete' | translate}}<i
+                          class="ri-delete-bin-line float-end text-muted"></i></a>
                     </div>
                   </div>
                 </li>
@@ -753,12 +741,30 @@
         </div>
         <!-- end chat user head -->
 
-        <div id="users-chat" class="position-relative" *ngIf="!isVideoChat">
+        <div id="users-chat" class="position-relative">
+          <div id="endbutton" class="endbutton">
+          <div class="media-container">
+            <div id="localParticipant" class="localParticipant" style="padding-left: 10px;">
+              <div id='localIdentity' *ngIf="localParticipant">Me -{{localParticipant}}</div>
+            </div>
+            <div id="remoteParticipant" style="padding-left: 30px;" >
+              <div id="remoteVideo" class="remoteVideo">
+                <div id='remoteIdentity'></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 30px;margin-left: 400px;">
+            <button href="javascript: void(0);" (click)="disconnect($event)">
+              <img src="assets/images/end-call.png" alt="" width="50" height="50" style="color:#878a92">
+            </button>
+          </div>
+        </div>
           <!-- start chat conversation -->
           <ngx-simplebar class="chat-conversation p-3 p-lg-4" #scrollRef>
             <ul class="list-unstyled mb-0" id="users-conversation">
               <li class="chats" *ngFor="let data of messages;let i =index;"
-                  [ngClass]="{'right': userName === data?.author}">
+                [ngClass]="{'right': userName === data?.author}">
                 <div class="conversation-list">
                   <div class="chat-avatar" *ngIf="userName != data?.author">
                     <!-- <img src="assets\images\user.png" alt="" > -->
@@ -852,27 +858,23 @@
                               <div class="ms-4">
                                 <ul class="list-inline mb-0 font-size-20">
                                   <!-- <li class="list-inline-item">
-                                    <a href="javascript:void(0);" class="text-muted">
-                                      <i class="ri-download-2-line"></i>
-                                    </a>
-                                  </li> -->
+                                  <a href="javascript:void(0);" class="text-muted">
+                                    <i class="ri-download-2-line"></i>
+                                  </a>
+                                </li> -->
                                   <li class="list-inline-item dropdown" ngbDropdown>
                                     <a class="dropdown-toggle text-muted" href="javascript:void(0);" ngbDropdownToggle
-                                       role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       <i class="ri-more-fill"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
                                       <!-- <a class="dropdown-item"
-                                        href="javascript:void(0);">{{'chat.messages.filedropdown.share' | translate}}
-                                        <i class="ri-share-line float-end text-muted"></i></a> -->
+                                      href="javascript:void(0);">{{'chat.messages.filedropdown.share' | translate}}
+                                      <i class="ri-share-line float-end text-muted"></i></a> -->
                                       <a class="dropdown-item" href="javascript:void(0);"
-                                         (click)="deleteMsg($event, data)">
-                                        {{
-'chat.messages.filedropdown.delete' |
-                                      translate
-                                        }}
-                                        <i class="ri-delete-bin-line float-end text-muted"></i>
-                                      </a>
+                                        (click)="deleteMsg($event, data)">{{'chat.messages.filedropdown.delete' |
+                                        translate}}
+                                        <i class="ri-delete-bin-line float-end text-muted"></i></a>
                                     </div>
                                   </li>
                                 </ul>
@@ -881,11 +883,13 @@
                           </div>
                         </div>
 
-                        <p class="chat-time mb-0" *ngIf="(data.dateUpdated |date:'dd/MM/yyyy')==(isToday|date:'dd/MM/yyyy')">
+                        <p class="chat-time mb-0"
+                          *ngIf="(data.dateUpdated |date:'dd/MM/yyyy')==(isToday|date:'dd/MM/yyyy')">
                           <i class="ri-time-line align-middle"></i>
                           <span class="align-middle">{{data.dateUpdated |date: 'shortTime'}}</span>
                         </p>
-                        <p class="chat-time mb-0" *ngIf="(data.dateUpdated |date:'dd/MM/yyyy')!=(isToday|date:'dd/MM/yyyy')">
+                        <p class="chat-time mb-0"
+                          *ngIf="(data.dateUpdated |date:'dd/MM/yyyy')!=(isToday|date:'dd/MM/yyyy')">
                           <i class="ri-time-line align-middle"></i>
                           <span class="align-middle">{{data.dateUpdated |date: 'short'}}</span>
                         </p>
@@ -893,13 +897,12 @@
 
                       <div class="dropdown align-self-start" ngbDropdown *ngIf="data?.body">
                         <a class="dropdown-toggle" href="javascript:void(0);" role="button" ngbDropdownToggle
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="ri-more-2-fill"></i>
                         </a>
                         <div class="dropdown-menu" ngbDropdownMenu>
-                          <a class="dropdown-item" href="javascript:void(0);">
-                            {{'chat.messages.dropdown.reply' | translate}} <i class="ri-reply-line float-end text-muted"></i>
-                          </a>
+                          <a class="dropdown-item" href="javascript:void(0);">{{'chat.messages.dropdown.reply' |
+                            translate}} <i class="ri-reply-line float-end text-muted"></i></a>
                           <!-- <a class="dropdown-item" href="javascript:void(0);"
                             (click)="copyMessage($event)">{{'chat.messages.dropdown.copy' | translate}} <i
                               class="ri-file-copy-line float-end text-muted"></i></a>
@@ -909,9 +912,8 @@
                             (click)="centerModal(centerDataModal)">{{'chat.messages.dropdown.forward' | translate}} <i
                               class="ri-chat-forward-line float-end text-muted"></i></a> -->
                           <a class="dropdown-item" href="javascript:void(0);" *ngIf="userName == data?.author"
-                             (click)="deleteMsg($event, data)">
-                            {{'chat.messages.dropdown.delete' | translate}}<i class="ri-delete-bin-line float-end text-muted"></i>
-                          </a>
+                            (click)="deleteMsg($event, data)">{{'chat.messages.dropdown.delete' | translate}}<i
+                              class="ri-delete-bin-line float-end text-muted"></i></a>
                         </div>
                       </div>
                     </div>
@@ -946,14 +948,8 @@
                         </div>
                       </div>
                     </div> -->
-                    <div class="conversation-name">
-                      <span *ngIf="userName != data?.author">
-                        {{
-data?.author |
-                        translate
-                        }}
-                      </span><span *ngIf="userName == data?.author">{{userName | translate}}</span>
-                    </div>
+                    <div class="conversation-name"><span *ngIf="userName != data?.author">{{data?.author |
+                        translate}}</span><span *ngIf="userName == data?.author">{{userName | translate}}</span></div>
                   </div>
                 </div>
 
@@ -964,14 +960,13 @@ data?.author |
             </ul>
           </ngx-simplebar>
           <div class="alert alert-warning alert-dismissible copyclipboard-alert px-4 fade" id="copyClipBoard"
-               role="alert">
+            role="alert">
             Message copied
           </div>
         </div>
         <!-- end chat conversation end -->
         <div class="flex-grow-1 overflow-hidden" *ngIf="isTyping" style="color:#7269ef">
-          <p class="chat-user-message text-truncate mb-0" style="padding-left: 50px;">
-            Typing....
+          <p class="chat-user-message text-truncate mb-0" style="padding-left: 50px;">Typing....
             <span class="animate-typing">
               <span class="dot ms-1"></span>
               <span class="dot ms-1"></span>
@@ -980,14 +975,14 @@ data?.author |
           </p>
         </div>
         <!-- start chat input section -->
-        <div class="p-3 p-lg-4 border-top mb-0 send-msg">
+        <div class="p-3 p-lg-4 border-top mb-0 send-msg" id="forVideoTab">
           <form (ngSubmit)="messageSend()" [formGroup]="formData" id="chatinput-form" enctype="multipart/form-data">
             <div class="row no-gutters">
               <div class="col">
                 <div>
-                  <input type="text" class="form-control form-control-lg bg-light border-light" (keydown)="currentConversation.typing()"
-                         placeholder="Enter Message..." [(ngModel)]="sendMessage" [ngModelOptions]="{standalone: true}" (blur)="onBlur()"
-                         (focus)="onFocus()">
+                  <input type="text" class="form-control form-control-lg bg-light border-light"
+                    (keydown)="currentConversation.typing()" placeholder="Enter Message..." [(ngModel)]="sendMessage"
+                    [ngModelOptions]="{standalone: true}" (blur)="onBlur()" (focus)="onFocus()">
                 </div>
               </div>
               <div class="col-auto">
@@ -1000,18 +995,18 @@ data?.author |
                         <i class="ri-emotion-happy-line"></i>
                       </button> -->
                       <emoji-mart class="emoji-mart" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)"
-                                  title="Pick your emoji…"></emoji-mart>
+                        title="Pick your emoji…"></emoji-mart>
                     </li>
                     <li class="list-inline-item">
                       <label id="files" class="btn btn-link text-decoration-none font-size-16 btn-lg waves-effect">
                         <i class="ri-attachment-line"></i>
-                        <input name="fileInput" size="60" type="file" class="form-control-file d-none" id="formInputFile"
-                               (change)="fileChange($event)">
+                        <input name="fileInput" size="60" type="file" class="form-control-file d-none"
+                          id="formInputFile" (change)="fileChange($event)">
                       </label>
                     </li>
                     <li class="list-inline-item">
                       <button type="submit"
-                              class="btn btn-primary font-size-16 btn-lg chat-send waves-effect waves-light">
+                        class="btn btn-primary font-size-16 btn-lg chat-send waves-effect waves-light">
                         <i class="ri-send-plane-2-fill"></i>
                       </button>
                     </li>
@@ -1034,7 +1029,7 @@ data?.author |
                 </div>
                 <div _ngcontent-hes-c189="" class="flex-shrink-0">
                   <button _ngcontent-hes-c189="" type="button" id="close_toggle"
-                          class="btn btn-sm btn-link mt-n2 me-n3 fs-18 shadow-none" (click)="closeReplay()">
+                    class="btn btn-sm btn-link mt-n2 me-n3 fs-18 shadow-none" (click)="closeReplay()">
                     <i _ngcontent-xeu-c127="" class="ri-close-line float-end fs-5"></i>
                   </button>
                 </div>
@@ -1045,6 +1040,7 @@ data?.author |
 
       </div>
       <!-- end chat conversation section -->
+
       <!-- <app-profile-detail></app-profile-detail> -->
     </div>
   </div>
@@ -1062,13 +1058,12 @@ data?.author |
         <img src="{{userProfile}}" class="rounded-circle avatar-lg img-thumbnail" alt="">
       </div>
       <h5 class="font-size-16 mb-1 text-truncate">{{userName | translate}}</h5>
-      <p class="text-muted text-truncate mb-1">
-        <i class="ri-record-circle-fill font-size-10 me-1"
-           [ngClass]=" {'text-success': userStatus === 'online','text-warning': userStatus === 'away'}"></i>
-        {{userStatus | translate}}
-      </p>
+      <p class="text-muted text-truncate mb-1"><i class="ri-record-circle-fill font-size-10 me-1"
+          [ngClass]=" {'text-success': userStatus === 'online','text-warning': userStatus === 'away'}"></i>
+        {{userStatus | translate}}</p>
     </div>
     <!-- End profile user -->
+
     <!-- Start user-profile-desc -->
     <perfect-scrollbar class="p-4 user-profile-desc">
       <div class="text-muted">
@@ -1109,10 +1104,8 @@ data?.author |
           <ngb-panel cardClass="card shadow-none border mb-2" id="file">
             <ng-template ngbPanelTitle>
               <h5 class="font-size-14 m-0">
-                <i class="ri-attachment-line me-2 align-middle d-inline-block"></i>{{
-'chat.rightpanel.attachedfile.text'
-                | translate
-                }}
+                <i class="ri-attachment-line me-2 align-middle d-inline-block"></i>{{'chat.rightpanel.attachedfile.text'
+                | translate}}
               </h5>
             </ng-template>
             <ng-template ngbPanelContent>
@@ -1126,8 +1119,7 @@ data?.author |
                   <div class="flex-grow-1">
                     <div class="text-start">
                       <h5 class="font-size-14 mb-1">{{'chat.rightpanel.attachedfile.file1.name' | translate}}</h5>
-                      <p class="text-muted font-size-13 mb-0">
-                        {{'chat.rightpanel.attachedfile.file1.size' | translate}}
+                      <p class="text-muted font-size-13 mb-0">{{'chat.rightpanel.attachedfile.file1.size' | translate}}
                       </p>
                     </div>
                   </div>
@@ -1141,32 +1133,20 @@ data?.author |
                       </li>
                       <li class="list-inline-item dropdown" ngbDropdown>
                         <a class="dropdown-toggle text-muted px-1" ngbDropdownToggle href="javascript:void(0);"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="ri-more-fill"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.action' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.action' |
+                            translate}}</a>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.another' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.another' |
+                            translate}}</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.delete' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.delete' |
+                            translate}}</a>
                         </div>
                       </li>
                     </ul>
@@ -1185,8 +1165,7 @@ data?.author |
                   <div class="flex-grow-1">
                     <div class="text-start">
                       <h5 class="font-size-14 mb-1">{{'chat.rightpanel.attachedfile.file2.name' | translate}}</h5>
-                      <p class="text-muted font-size-13 mb-0">
-                        {{'chat.rightpanel.attachedfile.file2.name' | translate}}
+                      <p class="text-muted font-size-13 mb-0">{{'chat.rightpanel.attachedfile.file2.name' | translate}}
                       </p>
                     </div>
                   </div>
@@ -1200,32 +1179,20 @@ data?.author |
                       </li>
                       <li class="list-inline-item dropdown" ngbDropdown>
                         <a class="dropdown-toggle text-muted px-1" ngbDropdownToggle href="javascript: void(0);"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="ri-more-fill"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.action' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.action' |
+                            translate}}</a>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.another' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.another' |
+                            translate}}</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.delete' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.delete' |
+                            translate}}</a>
                         </div>
                       </li>
                     </ul>
@@ -1244,8 +1211,7 @@ data?.author |
                   <div class="flex-grow-1">
                     <div class="text-start">
                       <h5 class="font-size-14 mb-1">{{'chat.rightpanel.attachedfile.file3.name' | translate}}</h5>
-                      <p class="text-muted font-size-13 mb-0">
-                        {{'chat.rightpanel.attachedfile.file3.size' | translate}}
+                      <p class="text-muted font-size-13 mb-0">{{'chat.rightpanel.attachedfile.file3.size' | translate}}
                       </p>
                     </div>
                   </div>
@@ -1259,32 +1225,20 @@ data?.author |
                       </li>
                       <li class="list-inline-item dropdown" ngbDropdown>
                         <a class="dropdown-toggle text-muted px-1" ngbDropdownToggle href="javascript: void(0);"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="ri-more-fill"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.action' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.action' |
+                            translate}}</a>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.another' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.another' |
+                            translate}}</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.delete' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.delete' |
+                            translate}}</a>
                         </div>
                       </li>
                     </ul>
@@ -1303,8 +1257,7 @@ data?.author |
                   <div class="flex-grow-1">
                     <div class="text-start">
                       <h5 class="font-size-14 mb-1">{{'chat.rightpanel.attachedfile.file4.name' | translate}}</h5>
-                      <p class="text-muted font-size-13 mb-0">
-                        {{'chat.rightpanel.attachedfile.file4.size' | translate}}
+                      <p class="text-muted font-size-13 mb-0">{{'chat.rightpanel.attachedfile.file4.size' | translate}}
                       </p>
                     </div>
                   </div>
@@ -1318,32 +1271,20 @@ data?.author |
                       </li>
                       <li class="list-inline-item dropdown" ngbDropdown>
                         <a class="dropdown-toggle text-muted px-1" ngbDropdownToggle href="javascript:void(0);"
-                           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <i class="ri-more-fill"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.action' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.action' |
+                            translate}}</a>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.another' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.another' |
+                            translate}}</a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item"
-                             href="javascript:void(0);">
-                            {{
-'chat.rightpanel.attachedfile.dropdown.delete' |
-                            translate
-                            }}
-                          </a>
+                            href="javascript:void(0);">{{'chat.rightpanel.attachedfile.dropdown.delete' |
+                            translate}}</a>
                         </div>
                       </li>
                     </ul>
@@ -1379,7 +1320,7 @@ data?.author |
           <div class="simplebar-mask">
             <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
               <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
-                   style="height: auto; overflow: hidden scroll;">
+                style="height: auto; overflow: hidden scroll;">
                 <div class="simplebar-content" style="padding: 0px;">
                   <div>
                     <div class="p-3 font-weight-bold text-primary">A</div>
@@ -1387,14 +1328,14 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck1" type="checkbox" class="form-check-input form-check-input"
-                                 value="Albert Rodarte">
+                            value="Albert Rodarte">
                           <label for="memberCheck1" class="form-check-label">Albert Rodarte</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck2" type="checkbox" class="form-check-input form-check-input"
-                                 value="Allison Etter">
+                            value="Allison Etter">
                           <label for="memberCheck2" class="form-check-label">Allison Etter</label>
                         </div>
                       </li>
@@ -1406,7 +1347,7 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck3" type="checkbox" class="form-check-input form-check-input"
-                                 value="Craig Smiley">
+                            value="Craig Smiley">
                           <label for="memberCheck3" class="form-check-label">Craig Smiley</label>
                         </div>
                       </li>
@@ -1418,14 +1359,14 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck4" type="checkbox" class="form-check-input form-check-input"
-                                 value="Daniel Clay">
+                            value="Daniel Clay">
                           <label for="memberCheck4" class="form-check-label">Daniel Clay</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck5" type="checkbox" class="form-check-input form-check-input"
-                                 value="Doris Brown">
+                            value="Doris Brown">
                           <label for="memberCheck5" class="form-check-label">Doris Brown</label>
                         </div>
                       </li>
@@ -1437,7 +1378,7 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck6" type="checkbox" class="form-check-input form-check-input"
-                                 value="Iris Wells">
+                            value="Iris Wells">
                           <label for="memberCheck6" class="form-check-label">Iris Wells</label>
                         </div>
                       </li>
@@ -1449,21 +1390,21 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck7" type="checkbox" class="form-check-input form-check-input"
-                                 value="Juan Flakes">
+                            value="Juan Flakes">
                           <label for="memberCheck7" class="form-check-label">Juan Flakes</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck8" type="checkbox" class="form-check-input form-check-input"
-                                 value="John Hall">
+                            value="John Hall">
                           <label for="memberCheck8" class="form-check-label">John Hall</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck9" type="checkbox" class="form-check-input form-check-input"
-                                 value="Joy Southern">
+                            value="Joy Southern">
                           <label for="memberCheck9" class="form-check-label">Joy Southern</label>
                         </div>
                       </li>
@@ -1475,21 +1416,21 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck10" type="checkbox" class="form-check-input form-check-input"
-                                 value="Mary Farmer">
+                            value="Mary Farmer">
                           <label for="memberCheck10" class="form-check-label">Mary Farmer</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck11" type="checkbox" class="form-check-input form-check-input"
-                                 value="Mark Messer">
+                            value="Mark Messer">
                           <label for="memberCheck11" class="form-check-label">Mark Messer</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck12" type="checkbox" class="form-check-input form-check-input"
-                                 value="Michael Hinton">
+                            value="Michael Hinton">
                           <label for="memberCheck12" class="form-check-label">Michael Hinton</label>
                         </div>
                       </li>
@@ -1501,7 +1442,7 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck13" type="checkbox" class="form-check-input form-check-input"
-                                 value="Ossie Wilson">
+                            value="Ossie Wilson">
                           <label for="memberCheck13" class="form-check-label">Ossie Wilson</label>
                         </div>
                       </li>
@@ -1513,14 +1454,14 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck14" type="checkbox" class="form-check-input form-check-input"
-                                 value="Phillis Griffin">
+                            value="Phillis Griffin">
                           <label for="memberCheck14" class="form-check-label">Phillis Griffin</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck15" type="checkbox" class="form-check-input form-check-input"
-                                 value="Paul Haynes">
+                            value="Paul Haynes">
                           <label for="memberCheck15" class="form-check-label">Paul Haynes</label>
                         </div>
                       </li>
@@ -1532,7 +1473,7 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck16" type="checkbox" class="form-check-input form-check-input"
-                                 value="Rocky Jackson">
+                            value="Rocky Jackson">
                           <label for="memberCheck16" class="form-check-label">Rocky Jackson</label>
                         </div>
                       </li>
@@ -1544,21 +1485,21 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck17" type="checkbox" class="form-check-input form-check-input"
-                                 value="Sara Muller">
+                            value="Sara Muller">
                           <label for="memberCheck17" class="form-check-label">Sara Muller</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck18" type="checkbox" class="form-check-input form-check-input"
-                                 value="Simon Velez">
+                            value="Simon Velez">
                           <label for="memberCheck18" class="form-check-label">Simon Velez</label>
                         </div>
                       </li>
                       <li>
                         <div class="form-check">
                           <input id="memberCheck19" type="checkbox" class="form-check-input form-check-input"
-                                 value="Steve Walker">
+                            value="Steve Walker">
                           <label for="memberCheck19" class="form-check-label">Steve Walker</label>
                         </div>
                       </li>
@@ -1570,7 +1511,7 @@ data?.author |
                       <li>
                         <div class="form-check">
                           <input id="memberCheck20" type="checkbox" class="form-check-input form-check-input"
-                                 value="Hanah Mile">
+                            value="Hanah Mile">
                           <label for="memberCheck20" class="form-check-label">Hanah Mile</label>
                         </div>
                       </li>
@@ -1600,8 +1541,7 @@ data?.author |
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">
-        Identity
-      </h5>
+        Identity</h5>
       <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
@@ -1610,36 +1550,30 @@ data?.author |
         <div class="mb-3">
           <label class="form-label">Enter Identity</label>
           <input type="text" class="form-control" id="identity" [(ngModel)]="identity" name="identity"
-                 placeholder="Enter Identity">
+            placeholder="Enter Identity">
         </div>
         <!-- <div class="mb-3">
-          <label class="form-label"
-            for="addcontact-invitemessage-input">{{'chat.tabs.contacts.modal.form.message.label' | translate}}</label>
-          <textarea class="form-control" id="addcontact-invitemessage-input" rows="3"
-            placeholder="{{'chat.tabs.contacts.modal.form.message.placeholder' | translate}}"></textarea>
-        </div> -->
+            <label class="form-label"
+              for="addcontact-invitemessage-input">{{'chat.tabs.contacts.modal.form.message.label' | translate}}</label>
+            <textarea class="form-control" id="addcontact-invitemessage-input" rows="3"
+              placeholder="{{'chat.tabs.contacts.modal.form.message.placeholder' | translate}}"></textarea>
+          </div> -->
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-link"
-              (click)="modal.dismiss('Cross click')">
-        Close
-      </button>
-      <button type="button"
-              class="btn btn-primary" (click)="AddParticipant()">
-        Add Participant
-      </button>
+      <button type="button" class="btn btn-link" (click)="modal.dismiss('Cross click')">Close</button>
+      <button type="button" class="btn btn-primary" (click)="AddParticipant()">Add Participant</button>
     </div>
   </div>
 </ng-template>
 <!-- End Add contact Modal -->
+
 <!--  Add Non-Participant Modal -->
 <ng-template #nonpartcipant let-modal>
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">
-        Phone Number
-      </h5>
+        Phone Number</h5>
       <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
@@ -1648,36 +1582,30 @@ data?.author |
         <div class="mb-3">
           <label class="form-label">Enter Phone Number</label>
           <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber"
-                 placeholder="Enter phoneNumber">
+            placeholder="Enter phoneNumber">
         </div>
         <!-- <div class="mb-3">
-          <label class="form-label"
-            for="addcontact-invitemessage-input">{{'chat.tabs.contacts.modal.form.message.label' | translate}}</label>
-          <textarea class="form-control" id="addcontact-invitemessage-input" rows="3"
-            placeholder="{{'chat.tabs.contacts.modal.form.message.placeholder' | translate}}"></textarea>
-        </div> -->
+              <label class="form-label"
+                for="addcontact-invitemessage-input">{{'chat.tabs.contacts.modal.form.message.label' | translate}}</label>
+              <textarea class="form-control" id="addcontact-invitemessage-input" rows="3"
+                placeholder="{{'chat.tabs.contacts.modal.form.message.placeholder' | translate}}"></textarea>
+            </div> -->
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-link"
-              (click)="modal.dismiss('Cross click')">
-        Close
-      </button>
-      <button type="button"
-              class="btn btn-primary" (click)="AddNonParticipant()">
-        Add Participant
-      </button>
+      <button type="button" class="btn btn-link" (click)="modal.dismiss('Cross click')">Close</button>
+      <button type="button" class="btn btn-primary" (click)="AddNonParticipant()">Add Participant</button>
     </div>
   </div>
 </ng-template>
 <!-- End Add contact Modal -->
+
 <!-- Start Add Conversation Modal -->
 <ng-template #newchat let-modal>
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title font-size-16" id="addContact-exampleModalLabel">
-        Identity
-      </h5>
+        Add New Conversation</h5>
       <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')">
       </button>
     </div>
@@ -1686,25 +1614,24 @@ data?.author |
         <div class="mb-3">
           <label class="form-label">Enter Identity</label>
           <input type="text" class="form-control" id="newUser" [(ngModel)]="newUser" name="newUser"
-                 placeholder="Enter Identity">
+            placeholder="Enter Identity">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Enter Conversation Name</label>
+          <input type="text" class="form-control" id="conversationName" [(ngModel)]="conversationName"
+            name="conversationName" placeholder="Enter Conversation Name">
         </div>
         <!-- <div class="mb-3">
-          <label class="form-label"
-            for="addcontact-invitemessage-input">{{'chat.tabs.contacts.modal.form.message.label' | translate}}</label>
-          <textarea class="form-control" id="addcontact-invitemessage-input" rows="3"
-            placeholder="{{'chat.tabs.contacts.modal.form.message.placeholder' | translate}}"></textarea>
-        </div> -->
+            <label class="form-label"
+              for="addcontact-invitemessage-input">{{'chat.tabs.contacts.modal.form.message.label' | translate}}</label>
+            <textarea class="form-control" id="addcontact-invitemessage-input" rows="3"
+              placeholder="{{'chat.tabs.contacts.modal.form.message.placeholder' | translate}}"></textarea>
+          </div> -->
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-link"
-              (click)="modal.dismiss('Cross click')">
-        Close
-      </button>
-      <button type="button"
-              class="btn btn-primary" (click)="AddNewConversation()">
-        Add Conversation
-      </button>
+      <button type="button" class="btn btn-link" (click)="modal.dismiss('Cross click')">Close</button>
+      <button type="button" class="btn btn-primary" (click)="AddNewConversation()">Add Conversation</button>
     </div>
   </div>
 </ng-template>

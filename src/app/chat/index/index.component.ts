@@ -105,6 +105,7 @@ export class IndexComponent implements OnInit {
   localVideo: ElementRef;
   isVideoChat: boolean = false;
   localParticipant: any;
+  conversationName:string
   //remoteParticipant:any
   // remoteParticipant = document.getElementById('remoteParticipant');
   // remoteIdentity = document.getElementById('remoteIdentity');
@@ -141,12 +142,12 @@ export class IndexComponent implements OnInit {
     private loader: SpinnerService,
     private toastr: ToastrService,
     private renderer: Renderer2,
-    private rendererFactory: RendererFactory2
+
   ) {
     this.$nameSubscriber = this.chatService.userName.subscribe(
       (name) => (this.userName = name)
     );
-    this.renderer = rendererFactory.createRenderer(null, null);
+
   }
 
   /**
@@ -183,6 +184,7 @@ export class IndexComponent implements OnInit {
     this.lang = this.translate.currentLang;
     this.onListScroll();
     this.getContacts();
+
   }
 
   // FCMInit() {
@@ -853,8 +855,6 @@ export class IndexComponent implements OnInit {
     this.chatService.getToken(this.userName).subscribe(
       (data: any) => {
         this.token = data.item1;
-        // this.chatService.connect(this.token);
-
         this.CallRedirect();
       },
       (error) => {
@@ -868,17 +868,9 @@ export class IndexComponent implements OnInit {
     this.loader.show();
     if (this.token != null || this.token != '' || this.token != undefined) {
       this.client = new Client(this.token);
-
-      //this.requestPermission();
-      //this.listen();
-
-      //this.getConversationsList()
-      if (
-        this.currentConversation == undefined ||
-        this.currentConversation == null
-      ) {
+      //this.client =  Conversation.
+      if (this.currentConversation == undefined || this.currentConversation == null) {
         this.listenToEvents();
-        //this.FCMInit();
       } else {
         this.fetchUserChats();
       }
@@ -889,8 +881,10 @@ export class IndexComponent implements OnInit {
   }
   public async requestPermission() {
     debugger;
+    await this.chatService.connect(this.token);
     // const app = await initializeApp(environment.firebase);
     const messaging = getMessaging();
+    this.chatService.chatConnectedEmitter.subscribe( () => {
     getToken(messaging, { vapidKey: environment.firebase.vapidKey })
       .then((currentToken) => {
         debugger;
@@ -901,14 +895,16 @@ export class IndexComponent implements OnInit {
           this.BrowserToken = currentToken;
           // this.conSub = this.chatService.chatConnectedEmitter.subscribe( () => {
           //   debugger
-          let a = this.chatService.chatClient;
+          //let a = this.chatService.chatClient;
           this.client.setPushRegistrationId('fcm', this.BrowserToken);
+
+          //this.client.setPushRegistrationId('fcm', this.BrowserToken);
           //.then(async (returnedToken) => {
           //console.log('Token registered successfully:', returnedToken);
           try {
             onMessage(messaging, (payload) => {
               debugger;
-              alert(payload.data.twi_body);
+              //alert(payload.data.twi_body);
               console.log(
                 'New foreground notification from Firebase Messaging!',
                 payload.notification
@@ -936,6 +932,7 @@ export class IndexComponent implements OnInit {
       .catch((err) => {
         console.log('An error occurred while retrieving token. ', err);
       });
+    });
   }
   listen() {
     const messaging1 = (async () => {
@@ -1174,6 +1171,8 @@ export class IndexComponent implements OnInit {
     this.messages = [];
     this.sendMessage = null;
     this.currentConversation = data;
+    document.getElementById('endbutton').style.visibility="hidden"
+    document.getElementById('endbutton').style.display="none"
     this.userlogo = this.currentConversation._participants.size;
     this.friendlyName = data.friendlyName;
     var removeClass = document.querySelectorAll('.chat-user-list li');
@@ -1185,6 +1184,8 @@ export class IndexComponent implements OnInit {
     document.querySelector('.chat-welcome-section').classList.add('d-none');
     document.querySelector('.user-chat').classList.remove('d-none');
     e.target.closest('li').classList.add('active');
+    document.getElementById('forVideoTab').style.visibility="visible"
+    document.getElementById('forVideoTab').style.display="block"
 
     // var data1 = this.chat.filter((chat:any) => {
     //   return chat.id === id;
@@ -1201,6 +1202,8 @@ export class IndexComponent implements OnInit {
     this.messages = [];
     this.sendMessage = null;
     this.currentConversation = data;
+    document.getElementById('endbutton').style.visibility="hidden"
+    document.getElementById('endbutton').style.display="none"
     this.userlogo = this.currentConversation._participants.size;
     this.friendlyName = data.friendlyName;
     //var removeClass = document.querySelectorAll('.chat-user-list li');
@@ -1213,6 +1216,8 @@ export class IndexComponent implements OnInit {
     document.querySelector('.chat-welcome-section').classList.add('d-none');
     document.querySelector('.user-chat').classList.remove('d-none');
     e.target.closest('li').classList.add('active');
+    document.getElementById('forVideoTab').style.visibility="visible"
+    document.getElementById('forVideoTab').style.display="block"
 
     // var data1 = this.chat.filter((chat:any) => {
     //   return chat.id === id;
@@ -1340,13 +1345,13 @@ export class IndexComponent implements OnInit {
   }
   AddNewConversation() {
     this.loader.show();
-    if (this.newUser != undefined || this.newUser != null) {
+    if ((this.newUser != undefined || this.newUser != null) && (this.conversationName != undefined || this.conversationName != null) ) {
       this.client
         .getUser(this.newUser)
         .then((res) => {
           this.client
             .createConversation({
-              friendlyName: `${this.newUser}-${this.userName}`,
+              friendlyName: this.conversationName,
             })
             .then(async (channel: Conversation) => {
               channel.join().then(async () => {
@@ -1446,47 +1451,15 @@ export class IndexComponent implements OnInit {
   }
 
   //Video Chat
-  public async AddRoom() {
-    this.loader.show();
-    await this.chatService.getVideoChatToken(this.userName).subscribe(
-      (data: any) => {
-        this.videotoken = data.item1;
-        connect(this.videotoken, {
-          audio: true,
-          name: this.roomName,
-          video: { width: 50, height: 150 },
-        }).then(
-          (room) => {
-            this.modalService.dismissAll();
-            this.loader.hide();
-            console.log(room);
-            console.log(`Successfully joined a Room: ${room}`);
-            room.on('participantConnected', (participant) => {
-              debugger;
-              console.log(`A remote Participant connected: ${participant}`);
-            });
-          },
-          (error) => {
-            console.error(`Unable to connect to Room: ${error.message}`);
-          }
-        );
-      },
-      (error) => {
-        this.toastr.error(error);
-        this.loader.hide();
-        return;
-      }
-    );
-  }
-  public async JoinVideoChat() {
-    const remoteParticipant = document.getElementById('remoteParticipant');
-    const remoteIdentity = document.getElementById('remoteIdentity');
 
+  public async JoinVideoChat() {
     this.loader.show();
     await this.chatService.getVideoChatToken(this.userName).subscribe(
       (data: any) => {
         this.modalService.dismissAll();
         this.videotoken = data.item1;
+        document.getElementById('forVideoTab').style.visibility="hidden"
+        document.getElementById('forVideoTab').style.display="none"
         connect(this.videotoken, {
           audio: true,
           name: this.joinRoomName,
@@ -1497,112 +1470,10 @@ export class IndexComponent implements OnInit {
             this.toastr.success('Joined room:' + room.name);
             this.roomObj = room;
             console.log(room);
+            this.listenToVideoEvents()
+
             this.isVideoChat = true;
             console.log(`Successfully joined a Room: ${room}`);
-
-            createLocalVideoTrack().then((track) => {
-              debugger;
-              const localMediaContainer =     document.getElementById('localParticipant');
-
-              localMediaContainer.appendChild(track.attach());
-              const element = track.attach();
-
-              const localParticipant = room.localParticipant;
-            this.localParticipant = localParticipant.identity;
-
-            const tracksDiv = document.createElement('div');
-              tracksDiv.setAttribute('id', localParticipant.sid);
-              remoteParticipant.appendChild(tracksDiv);
-              remoteIdentity.innerHTML = localParticipant.identity;
-
-            // localParticipant.publishTrack(track).then(localTrackPublication => {
-            //   console.log(localTrackPublication)
-            //   //console.log(`Track`+ ${track.name}+' was published with SID' +${localTrackPublication.tracksid})
-            // })
-            });
-
-            this.roomParticipants = room.participants;
-            // room.participants.forEach(participant => {
-            //  //this.attachParticipantTracks(participant);
-            //   });
-            debugger;
-
-            room.on('participantDisconnected', (participant) => {
-              console.log('disconnected');
-              // this.detachTracks(participant);
-            });
-
-            room.on('participantConnected', (participant) => {
-              this.toastr.info(participant.identity + 'joined the room');
-              console.log(
-                `A remote Participant connected: ${participant.identity}`
-              );
-              debugger;
-
-              const tracksDiv = document.createElement('div');
-              tracksDiv.setAttribute('id', participant.sid);
-              remoteParticipant.appendChild(tracksDiv);
-              remoteIdentity.innerHTML = participant.identity;
-
-              //           const div = document.createElement('div');
-              // div.id = participant.sid;
-              // div.innerText = participant.identity;
-
-              participant.on('trackSubscribed', (track) =>
-                this.trackSubscribed(tracksDiv, track)
-              );
-              participant.on('trackUnsubscribed', this.trackUnsubscribed);
-
-              participant.tracks.forEach((publication) => {
-                if (publication.isSubscribed) {
-                  this.trackSubscribed(tracksDiv, publication.track);
-                }
-              });
-
-              document.body.appendChild(tracksDiv);
-              // participant.tracks.forEach(publication => {
-              // if (publication.isSubscribed) {
-              //   const track = publication.track;
-              //     document.getElementById('remote-media-div').appendChild(track.attach());
-              //   }
-              // });
-              // participant.on('trackSubscribed', track => {
-              //   document.getElementById('remote-media-div').appendChild(track.attach());
-              //   });
-            });
-
-            room.participants.forEach((participant) => {
-              participant.tracks.forEach((publication) => {
-                if (publication.track) {
-                  console.log(publication.track);
-                  //document.getElementById('remote-media-div').appendChild(publication.track.attach());
-                }
-              });
-
-              participant.on('trackSubscribed', (track) => {
-                debugger;
-                console.log(track);
-                const div = document.createElement('div');
-                div.id = participant.sid;
-                div.innerText = participant.identity;
-                if (track.kind == 'video') {
-                  track.dimensions.height = 3000;
-                  track.dimensions.width = 120000;
-                }
-                this.trackSubscribed(div, track);
-                //document.getElementById('remote-media-div').appendChild(track.attach());
-              });
-            });
-
-            // Log Participants as they disconnect from the Room
-            room.once('participantDisconnected', (participant) => {
-              this.toastr.success(
-                `Participant "${participant.identity}" has disconnected from the Room`
-              );
-              console.log(
-                `Participant "${participant.identity}" has disconnected from the Room`
-              );
-            });
           },
           (error) => {
             console.error(`Unable to connect to Room: ${error.message}`);
@@ -1619,6 +1490,12 @@ export class IndexComponent implements OnInit {
   trackSubscribed(div, track) {
     //   const trackElement = track.attach();
     // div.appendChild(trackElement);
+    if(track.kind=='video'){
+      track.dimensions.width=250
+      track.dimensions.height= 100
+    }
+    console.log(track.dimensions)
+    debugger
     document.getElementById('remoteVideo').appendChild(track.attach());
   }
   trackUnsubscribed(track) {
@@ -1675,12 +1552,26 @@ export class IndexComponent implements OnInit {
   //   });
   //   }
 
-  disconnect() {
-    if (this.roomObj && this.roomObj !== null) {
-      this.roomObj.disconnect();
-      this.roomObj = null;
-    } else this.router.navigate(['thanks']);
+  disconnect(e) {
+    this.loader.show();
+      if (this.roomObj && this.roomObj !== null) {
+        this.roomObj.localParticipant.videoTracks.forEach(publication => {
+          publication.unpublish();
+          publication.track.stop();
+          this.roomObj.disconnect();
+          this.roomObj = null;
+          document.getElementById('endbutton').style.visibility="hidden"
+          document.getElementById('endbutton').style.display="none"
+          this.toastr.success(`Participant "${this.localParticipant}" has disconnected from the Room` );
+          this.loader.hide()
+        });
+
+
+
+    }
   }
+  trackRemoved(e){debugger
+  console.log(e)}
 
   trackPublished(publication, participant) {
     console.log(
@@ -1702,8 +1593,155 @@ export class IndexComponent implements OnInit {
     });
   }
 
+  listenToVideoEvents(){
+    const remoteParticipant = document.getElementById('remoteParticipant');
+    const remoteIdentity = document.getElementById('remoteIdentity');
 
-  CallDisconnect(){
+    const room= this.roomObj
+    document.querySelector('.user-chat').classList.add('user-chat-show');
+    document.querySelector('.chat-welcome-section').classList.add('d-none');
+    document.querySelector('.user-chat').classList.remove('d-none');
+    //document.getElementById('chat-room').classList.add('user-chat-show');
+    createLocalVideoTrack().then((track) => {
+      debugger;
+      const localMediaContainer =     document.getElementById('localParticipant');
+      if(track.kind=='video'){
+        track.dimensions.width=50
+        track.dimensions.height = 25
+      }
+
+
+      localMediaContainer.appendChild(track.attach());
+      console.log(track)
+      const element = track.attach();
+      const localParticipant = room.localParticipant;
+    this.localParticipant = localParticipant.identity;
+
+    // const tracksDiv = document.createElement('div');
+    //   tracksDiv.setAttribute('id', localParticipant.sid);
+    //   remoteParticipant.appendChild(tracksDiv);
+    //   remoteIdentity.innerHTML = localParticipant.identity;
+
+    // localParticipant.publishTrack(track).then(localTrackPublication => {
+    //   console.log(localTrackPublication)
+    //   //console.log(`Track`+ ${track.name}+' was published with SID' +${localTrackPublication.tracksid})
+    // })
+    });
+    document.getElementById('endbutton').style.visibility="visible"
+    document.getElementById('endbutton').style.display="block"
+    this.roomParticipants = room.participants;
+    // room.participants.forEach(participant => {
+    //  //this.attachParticipantTracks(participant);
+    //   });
+    debugger;
+
+    room.on('participantDisconnected', (participant) => {
+      console.log('disconnected');
+      // this.detachTracks(participant);
+    });
+
+    room.on('participantConnected', (participant) => {
+      this.toastr.info(participant.identity + 'joined the room');
+      console.log(
+        `A remote Participant connected: ${participant.identity}`
+      );
+      debugger;
+
+      const tracksDiv = document.createElement('div');
+      tracksDiv.setAttribute('id', participant.sid);
+      remoteParticipant.appendChild(tracksDiv);
+      remoteIdentity.innerHTML = participant.identity;
+
+      //           const div = document.createElement('div');
+      // div.id = participant.sid;
+      // div.innerText = participant.identity;
+
+      participant.on('trackSubscribed', (track) =>
+        this.trackSubscribed(tracksDiv, track)
+      );
+      participant.on('trackUnsubscribed', this.trackUnsubscribed);
+
+      participant.tracks.forEach((publication) => {
+        if (publication.isSubscribed) {
+          this.trackSubscribed(tracksDiv, publication.track);
+        }
+      });
+
+      document.body.appendChild(tracksDiv);
+      // participant.tracks.forEach(publication => {
+      // if (publication.isSubscribed) {
+      //   const track = publication.track;
+      //     document.getElementById('remote-media-div').appendChild(track.attach());
+      //   }
+      // });
+      // participant.on('trackSubscribed', track => {
+      //   document.getElementById('remote-media-div').appendChild(track.attach());
+      //   });
+    });
+
+    room.participants.forEach((participant) => {
+      participant.tracks.forEach((publication) => {
+        if (publication.track) {
+          console.log(publication.track);
+          //document.getElementById('remote-media-div').appendChild(publication.track.attach());
+        }
+      });
+
+      participant.on('trackSubscribed', (track) => {
+        debugger;
+        console.log(track);
+        const div = document.createElement('div');
+        div.id = participant.sid;
+        div.innerText = participant.identity;
+        this.trackSubscribed(div, track);
+        //document.getElementById('remote-media-div').appendChild(track.attach());
+      });
+    });
+
+    // Log Participants as they disconnect from the Room
+    room.once('participantDisconnected', (participant) => {
+      document.getElementById('endbutton').classList.remove('end-button-show');
+      this.toastr.success(
+        `Participant "${participant.identity}" has disconnected from the Room`
+      );
+      console.log(
+        `Participant "${participant.identity}" has disconnected from the Room`
+      );
+    });
 
   }
+
+  public async startVideoChat() {
+    this.loader.show();
+    await this.chatService.getVideoChatTokenWithRoom(this.userName, this.friendlyName).subscribe(
+      (data: any) => {
+        debugger
+        this.videotoken = data.item1;
+        connect(this.videotoken, {
+          audio: true,
+          name: this.roomName,
+          video: { width: 360, height:  150},
+        }).then(
+          (room) => {
+            this.roomObj = room;
+            console.log(room);
+            this.modalService.dismissAll();
+            this.loader.hide();
+            console.log(`Successfully joined a Room: ${room.name}`);
+            this.listenToVideoEvents()
+          },
+          (error) => {
+            console.error(`Unable to connect to Room: ${error.message}`);
+          }
+        );
+      },
+      (error) => {
+        this.toastr.error(error);
+        this.loader.hide();
+        return;
+      }
+    );
+
+  }
+
 }

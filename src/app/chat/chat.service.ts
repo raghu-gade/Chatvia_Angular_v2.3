@@ -81,6 +81,10 @@ export class ChatService {
     return this.http.get(this.url + 'Chat/CreateVideoAccessToken?name=' +name);
   }
 
+  getVideoChatTokenWithRoom(name:string, roomName:string): Observable<any>{
+    return this.http.get(this.url + 'Chat/CreateVideoTokenWithRoom?name=' +name+'&room='+roomName);
+  }
+
 
 
 

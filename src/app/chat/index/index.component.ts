@@ -50,6 +50,7 @@ import { SendNotificationByIdentity } from 'src/app/models/SendNotificationByIde
 import * as firebase from 'firebase/compat';
 import { FirebaseApp, initializeApp } from 'firebase/app';
 import { connect, createLocalVideoTrack } from 'twilio-video';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 @Component({
   selector: 'app-index',
@@ -144,6 +145,7 @@ export class IndexComponent implements OnInit {
     private loader: SpinnerService,
     private toastr: ToastrService,
     private renderer: Renderer2,
+    private oauthService: OAuthService
 
   ) {
     this.$nameSubscriber = this.chatService.userName.subscribe(
@@ -233,12 +235,14 @@ export class IndexComponent implements OnInit {
    * Logout the user
    */
   logout() {
-    if (environment.defaultauth === 'firebase') {
-      this.authService.logout();
-    } else if (environment.defaultauth === 'fackbackend') {
-      this.authFackservice.logout();
-    }
-    this.router.navigate(['/account/login']);
+    debugger
+    this.oauthService.logOut();
+    // if (environment.defaultauth === 'firebase') {
+    //   this.authService.logout;
+    // } else if (environment.defaultauth === 'fackbackend') {
+    //   this.authFackservice.logout();
+    // }
+    // this.router.navigate(['/account/login']);
   }
 
   /**

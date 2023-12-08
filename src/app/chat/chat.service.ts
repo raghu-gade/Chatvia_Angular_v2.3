@@ -33,6 +33,9 @@ export class ChatService {
   setUsername(text:string){
     this.userName.next(text);
   }
+  getUserName(){
+  this.userName =this.userName
+  }
   connect(token) {
     Twilio.Client.create(token).then( (client: Client) => {
       this.chatClient = client;
@@ -83,6 +86,9 @@ export class ChatService {
 
   getVideoChatTokenWithRoom(name:string, roomName:string): Observable<any>{
     return this.http.get(this.url + 'Chat/CreateVideoTokenWithRoom?name=' +name+'&room='+roomName);
+  }
+  GetParticipantsByConversationSid(sid){
+    return this.http.get(this.url + 'Chat/GetParticipantsByConversationSid?ConversationId='+sid);
   }
 
 

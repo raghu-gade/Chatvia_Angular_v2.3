@@ -106,6 +106,8 @@ export class IndexComponent implements OnInit {
   isVideoChat: boolean = false;
   localParticipant: any;
   conversationName:string
+  currentConversationSid:any
+  currentConversationParticipants:[]
   //remoteParticipant:any
   // remoteParticipant = document.getElementById('remoteParticipant');
   // remoteIdentity = document.getElementById('remoteIdentity');
@@ -168,15 +170,16 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     document.body.setAttribute('data-layout-mode', 'light');
     this.isToday = new Date();
-    //this.FCMInit()
 
-    this.connectTwilio();
     // Validation
     this.formData = this.formBuilder.group({
       message: ['', [Validators.required]],
     });
 
+    //const user = this.userName;
+
     const user = this.userName;
+    this.connectTwilio();
     this.senderName = user;
     this.senderProfile = 'assets/images/user.png';
     this.chat = chat;
@@ -186,94 +189,13 @@ export class IndexComponent implements OnInit {
     this.getContacts();
 
   }
-
-  // FCMInit() {
-  //   try {
-  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //     debugger
-  //     //this.app = initializeApp((window as any).firebaseConfig);
-  //     this.app = initializeApp(environment.firebase);
-  //     this.messaging = getMessaging(this.app);
-  //     this.initialized = true;
-  //     //this.initFcmServiceWorker();
-
-  //   } catch(err) {
-  //     console.log(err)
-  //     console.warn("Couldn't initialize firebase app");
-  //   }
-  // }
-
   ngAfterViewInit() {
     this.scrollRef.SimpleBar.getScrollElement().scrollTop = 100;
   }
-  //  initFcmServiceWorker = async (): Promise<void> => {
-  //     if (!this.initialized) {
-  //       return;
-  //     }
 
-  //     try {
-  //       debugger
-  //       const registration = await navigator.serviceWorker.register(
-  //         "firebase-messaging-sw.js"
-  //       );
-  //       //this.subscribeFcmNotifications(this.client);
-  //       console.log("ServiceWorker registered with scope:", registration.scope);
-  //     } catch (e) {
-  //       console.log("ServiceWorker registration failed:", e);
-  //     }
-  //   };
-  // subscribeFcmNotifications = async (
-  //     convoClient: Client
-  //   ): Promise<void> => {
-  //     if (!this.initialized) {
-  //       return;
-  //     }
-  // try {
-  //     const permission = await Notification.requestPermission();
-  //     debugger
-  //     if (permission !== "granted") {
-  //       console.log("FcmNotifications: can't request permission:", permission);
-  //       return;
-  //     }
-
-  //     const fcmToken = await getToken(this.messaging, { vapidKey: environment.firebase.vapidKey});
-  //     if (!fcmToken) {
-  //       console.log("FcmNotifications: can't get fcm token");
-  //       return;
-  //     }
-
-  //     console.log("FcmNotifications: got fcm token", fcmToken);
-  //     try{
-  //     await this.client.setPushRegistrationId("fcm", fcmToken).then(a=>{
-  //       console.log(a)
-  //     }).catch(e=>{console.log(e)})
-  //     debugger
-  //   }
-  //   catch (e) {
-  //     console.log(e)
-  //     console.log("subscribeFcmNotifications failed:", e);
-  //   }
-  //     onMessage(this.messaging, (payload) => {
-  //       console.log("FcmNotifications: push received", payload);
-  //       if (convoClient) {
-  //         convoClient.handlePushNotification(payload);
-  //       }
-  //     });
-  //   } catch (e) {
-  //     console.log(e)
-  //     console.log("subscribeFcmNotifications failed:", e);
-  //   }
-  //   };
   showNotification = (pushNotification: PushNotification): void => {
-    // if (!this.initialized) {
-    //   return;
-    // }
 
-    // TODO: remove when new version of sdk will be released
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     const notificationTitle = pushNotification.data.conversationTitle || '';
-    debugger;
     const notificationOptions = {
       body: pushNotification.body ?? '',
       icon: 'favicon.ico',
@@ -465,7 +387,12 @@ export class IndexComponent implements OnInit {
 
   // Filter Offcanvas Set
   onChatInfoClicked(content: TemplateRef<any>) {
+    this.loader.show()
     this.offcanvasService.open(content, { position: 'end' });
+    this.chatService.GetParticipantsByConversationSid(this.currentConversationSid).subscribe((data:any)=>{
+      this.loader.hide()
+      this.currentConversationParticipants = data.participants
+    })
   }
 
   /**
@@ -880,31 +807,19 @@ export class IndexComponent implements OnInit {
     }
   }
   public async requestPermission() {
-    debugger;
     await this.chatService.connect(this.token);
     // const app = await initializeApp(environment.firebase);
     const messaging = getMessaging();
     this.chatService.chatConnectedEmitter.subscribe( () => {
     getToken(messaging, { vapidKey: environment.firebase.vapidKey })
       .then((currentToken) => {
-        debugger;
         if (currentToken) {
           console.log('Hurraaa!!! we got the token.....');
           console.log(currentToken);
-          debugger;
           this.BrowserToken = currentToken;
-          // this.conSub = this.chatService.chatConnectedEmitter.subscribe( () => {
-          //   debugger
-          //let a = this.chatService.chatClient;
           this.client.setPushRegistrationId('fcm', this.BrowserToken);
-
-          //this.client.setPushRegistrationId('fcm', this.BrowserToken);
-          //.then(async (returnedToken) => {
-          //console.log('Token registered successfully:', returnedToken);
           try {
             onMessage(messaging, (payload) => {
-              debugger;
-              //alert(payload.data.twi_body);
               console.log(
                 'New foreground notification from Firebase Messaging!',
                 payload.notification
@@ -915,14 +830,6 @@ export class IndexComponent implements OnInit {
           } catch (e) {
             console.log(e);
           }
-
-          // })
-          // .catch(error => {
-          //   debugger
-          //     console.error('Error occurred:', error);
-          // });
-
-          // })
         } else {
           console.log(
             'No registration token available. Request permission to generate one.'
@@ -960,7 +867,6 @@ export class IndexComponent implements OnInit {
     this.loader.show();
 
     this.client.on('initialized', () => {
-      debugger;
       console.log('Client initialized');
       this.requestPermission();
       this.fetchUserChats();
@@ -1001,7 +907,6 @@ export class IndexComponent implements OnInit {
             unreadCount: 0,
             lastMessage: '',
           };
-          //this.chatList = [newChat,...this.chatList];
         }
       }, 500);
       this.loader.hide();
@@ -1024,8 +929,8 @@ export class IndexComponent implements OnInit {
     });
     // fired when a participant has joined the conversation
     this.client.on('participantJoined', (participant) => {
-      debugger;
       console.log('Participant Added', participant);
+      this.toastr.info("Participant Added: " + participant.identity)
     });
 
     this.client.on('conversationRemoved', (conv: Conversation) => {
@@ -1033,12 +938,10 @@ export class IndexComponent implements OnInit {
       this.loader.hide();
       //this.fetchUserChats();
       console.log('conversationRemoved', conv);
+      this.toastr.success("Conversation Deleted" + conv.friendlyName)
     });
     this.client.on('pushNotification', (pushNotification: PushNotification) => {
-      debugger;
       this.showNotification(pushNotification);
-      // pushNotification was received by the client
-      debugger;
       console.log(pushNotification);
     });
     this.client.on('messageAdded', async (msg: Message) => {
@@ -1073,7 +976,6 @@ export class IndexComponent implements OnInit {
     this.loader.hide();
   }
   public async getNotificationMsg(msg) {
-    debugger;
     // const messaging1 = (async () => {
     //   try {
     //       const isSupportedBrowser = await isSupported();
@@ -1092,30 +994,11 @@ export class IndexComponent implements OnInit {
     const messaging = getMessaging();
 
     onMessage(messaging, (payload) => {
-      debugger;
       console.log('Message received. ', payload);
       this.client.handlePushNotification(payload);
       //this.messaging=payload;
     });
 
-    //       const onMessageListener = async () =>
-    //   new Promise((resolve) =>
-    //     (async () => {
-    //         const messagingResolve = await messaging;
-    //         onMessage(messagingResolve, (payload) => {
-    //             // console.log('On message: ', messaging, payload);
-    //             debugger
-    //             resolve(payload);
-    //         });
-    //     })()
-    // );
-    //   // onMessage(msg, (payload) =>  {
-    //   // debugger
-    //   // console.log('Message received. ', payload);
-    //   // this.client.handlePushNotification(payload);
-    //   // this.messaging=payload;
-
-    // });
   }
   fetchUserChats() {
     this.loader.show();
@@ -1125,18 +1008,7 @@ export class IndexComponent implements OnInit {
       .getSubscribedConversations()
       .then((convs) => {
         let chats: any = [...convs.items];
-        // for (let i = 0; i < chats.length; i++) {
-        //   debugger
-        //      let obj = {
-        //     chat: chat,
-        //     unreadCount:  chats[i].getUnreadMessagesCount(),
-        //     lastMessage: (chats[i].getMessages()).items[
-        //       chats[i].lastReadMessageIndex || 0
-        //     ],
-        //   };
-        //   this.chatList.push(obj);
 
-        // }
         if (chats.length > 0) {
           chats.forEach(async (chat: Conversation) => {
             let obj = {
@@ -1145,17 +1017,15 @@ export class IndexComponent implements OnInit {
               lastMessage: (await chat.getMessages()).items[
                 chat.lastReadMessageIndex || 0
               ],
-              users: await chat.getParticipants(),
+              users: await chat.getParticipantsCount(),
             };
 
-            if (obj.users.length <= 2) {
+            if (obj.users <= 2) {
               this.chatList.push(obj);
             }
-            if (obj.users.length > 2) {
+            if (obj.users > 2) {
               this.groupList.push(obj);
             }
-
-            // this.chatList.push(obj);
           });
         }
         this.loader.hide();
@@ -1169,12 +1039,14 @@ export class IndexComponent implements OnInit {
   showChatMsg(e, data) {
     this.loader.show();
     this.messages = [];
+    this.currentConversationParticipants=[]
     this.sendMessage = null;
     this.currentConversation = data;
     document.getElementById('endbutton').style.visibility="hidden"
     document.getElementById('endbutton').style.display="none"
     this.userlogo = this.currentConversation._participants.size;
     this.friendlyName = data.friendlyName;
+    this.currentConversationSid= data.sid
     var removeClass = document.querySelectorAll('.chat-user-list li');
     removeClass.forEach((element: any) => {
       element.classList.remove('active');
@@ -1200,12 +1072,14 @@ export class IndexComponent implements OnInit {
   showgroupChatMsg(e, data) {
     this.loader.show();
     this.messages = [];
+    this.currentConversationParticipants =[]
     this.sendMessage = null;
     this.currentConversation = data;
     document.getElementById('endbutton').style.visibility="hidden"
     document.getElementById('endbutton').style.display="none"
     this.userlogo = this.currentConversation._participants.size;
     this.friendlyName = data.friendlyName;
+    this.currentConversationSid= data.sid
     //var removeClass = document.querySelectorAll('.chat-user-list li');
     var removeClass = document.querySelectorAll('.chat-list li');
     removeClass.forEach((element: any) => {
@@ -1230,17 +1104,7 @@ export class IndexComponent implements OnInit {
     this.onListScroll();
   }
   fetchMessages(skip?: number) {
-    // this.isLoading = true;
-    // this.chatService.getMessagesByConvId(e.sid).subscribe({
-    //   next: (data) => {
-    //     debugger
-    //     this.messages=data.messages
-    //     this.isLoading = false;
-    //   },
-    //   error: (err: any) => {
-    //    console.log(err);
-    //   }
-    // })
+
     this.loader.show();
     this.currentConversation
       .getMessages(30, skip)
@@ -1318,7 +1182,7 @@ export class IndexComponent implements OnInit {
   AddNonParticipant() {
     this.loader.show();
     if (this.phoneNumber != undefined || this.phoneNumber != null) {
-      const proxyAddress = '+18595873984';
+      const proxyAddress = '+14403055588';
       const address = this.phoneNumber;
       const attributes = {
         identity: address,
@@ -1355,7 +1219,6 @@ export class IndexComponent implements OnInit {
             })
             .then(async (channel: Conversation) => {
               channel.join().then(async () => {
-                debugger;
                 await channel.setAllMessagesUnread();
                 // added code for channel with friendly name
                 channel.add(this.newUser).then(() => {
@@ -1495,7 +1358,6 @@ export class IndexComponent implements OnInit {
       track.dimensions.height= 100
     }
     console.log(track.dimensions)
-    debugger
     document.getElementById('remoteVideo').appendChild(track.attach());
   }
   trackUnsubscribed(track) {
@@ -1570,8 +1432,7 @@ export class IndexComponent implements OnInit {
 
     }
   }
-  trackRemoved(e){debugger
-  console.log(e)}
+  trackRemoved(e){  console.log(e)}
 
   trackPublished(publication, participant) {
     console.log(
@@ -1601,9 +1462,8 @@ export class IndexComponent implements OnInit {
     document.querySelector('.user-chat').classList.add('user-chat-show');
     document.querySelector('.chat-welcome-section').classList.add('d-none');
     document.querySelector('.user-chat').classList.remove('d-none');
-    //document.getElementById('chat-room').classList.add('user-chat-show');
+
     createLocalVideoTrack().then((track) => {
-      debugger;
       const localMediaContainer =     document.getElementById('localParticipant');
       if(track.kind=='video'){
         track.dimensions.width=50
@@ -1630,10 +1490,6 @@ export class IndexComponent implements OnInit {
     document.getElementById('endbutton').style.visibility="visible"
     document.getElementById('endbutton').style.display="block"
     this.roomParticipants = room.participants;
-    // room.participants.forEach(participant => {
-    //  //this.attachParticipantTracks(participant);
-    //   });
-    debugger;
 
     room.on('participantDisconnected', (participant) => {
       console.log('disconnected');
@@ -1645,16 +1501,10 @@ export class IndexComponent implements OnInit {
       console.log(
         `A remote Participant connected: ${participant.identity}`
       );
-      debugger;
-
       const tracksDiv = document.createElement('div');
       tracksDiv.setAttribute('id', participant.sid);
       remoteParticipant.appendChild(tracksDiv);
       remoteIdentity.innerHTML = participant.identity;
-
-      //           const div = document.createElement('div');
-      // div.id = participant.sid;
-      // div.innerText = participant.identity;
 
       participant.on('trackSubscribed', (track) =>
         this.trackSubscribed(tracksDiv, track)
@@ -1668,27 +1518,17 @@ export class IndexComponent implements OnInit {
       });
 
       document.body.appendChild(tracksDiv);
-      // participant.tracks.forEach(publication => {
-      // if (publication.isSubscribed) {
-      //   const track = publication.track;
-      //     document.getElementById('remote-media-div').appendChild(track.attach());
-      //   }
-      // });
-      // participant.on('trackSubscribed', track => {
-      //   document.getElementById('remote-media-div').appendChild(track.attach());
-      //   });
     });
 
     room.participants.forEach((participant) => {
       participant.tracks.forEach((publication) => {
         if (publication.track) {
           console.log(publication.track);
-          //document.getElementById('remote-media-div').appendChild(publication.track.attach());
+
         }
       });
 
       participant.on('trackSubscribed', (track) => {
-        debugger;
         console.log(track);
         const div = document.createElement('div');
         div.id = participant.sid;
@@ -1715,7 +1555,6 @@ export class IndexComponent implements OnInit {
     this.loader.show();
     await this.chatService.getVideoChatTokenWithRoom(this.userName, this.friendlyName).subscribe(
       (data: any) => {
-        debugger
         this.videotoken = data.item1;
         connect(this.videotoken, {
           audio: true,

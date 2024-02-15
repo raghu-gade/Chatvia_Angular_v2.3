@@ -6,6 +6,7 @@ import { Subscription, filter } from 'rxjs';
 import { SpinnerService } from './spinner/spinner.service';
 import { AuthorizeService } from './Startup/authorizeservice';
 import { UserIdleService } from 'angular-user-idle';
+import { ChatService } from './chat/chat.service';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit {
   accessTokenLifeTimeMillSec: any;
   message:any
   BrowserToken:any
-  constructor(public translate: TranslateService,private oauthService: OAuthService, private router: Router, private spinnerService: SpinnerService, private authorizeService: AuthorizeService,private userIdle: UserIdleService) {
+  constructor(public translate: TranslateService,private oauthService: OAuthService, private router: Router, private spinnerService: SpinnerService, private authorizeService: AuthorizeService,private userIdle: UserIdleService,
+    private chatService: ChatService) {
     translate.addLangs(['en', 'es', 'it', 'ru', 'de']);
     translate.setDefaultLang('en');
 
@@ -38,14 +40,16 @@ export class AppComponent implements OnInit {
   idelTimeout(count: any) {
     this.oauthService.logOut();
   }
-  configure() {
+  public async configure() {
     debugger
     this.spinnerService.show();
     this.isSessionContinue = false;
-    this.oauthService.loadDiscoveryDocumentAndTryLogin({ disableOAuth2StateCheck: true })
-      .then(_ => {
+    await this.oauthService.loadDiscoveryDocumentAndTryLogin({ disableOAuth2StateCheck: true })
+      .then(async _ => {
+        debugger
         if (!this.oauthService.hasValidIdToken() ||
           !this.oauthService.hasValidAccessToken()) {
+            debugger
           this.oauthService.initLoginFlow(window.location.hash);
         }
         else {
@@ -53,7 +57,7 @@ export class AppComponent implements OnInit {
           this.authorizeService.isAuthorized = true;
           console.log("Auherized");
           this.oauthService.state = this.oauthService.state === '' ? window.location.hash : this.oauthService.state;
-          this.oauthService.loadUserProfile()
+         await this.oauthService.loadUserProfile()
             .then((data) => {
               var currentAuthStatus;
               data['email'] = data['unique_name'];
@@ -66,6 +70,8 @@ export class AppComponent implements OnInit {
                   currentAuthStatus = status;
                 });
               this.spinnerService.hide();
+              var Userdata= this.authorizeService.userInfo
+              this.chatService.setUsername(Userdata.info.firstname)
               this.router.navigate([this.landingPage()]);
               //this.router.navigate(['/']);
               this.authorizeService.isAuthorizeUser$.next(!currentAuthStatus);
